@@ -1045,7 +1045,7 @@ html {
 
 .contact-text h4{
     margin: 15px 0;
-    color: var(--light-hover-color);
+    color: var(--light-hover-background-color);
     font-size: 18px;
 }
 
