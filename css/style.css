@@ -1,0 +1,1777 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root{
+    /* COLORS */
+    --dark-font: #F5F5F5;
+    --dark-color: #121212;
+    --dark-hover: #CF4647;
+    --dark-font-hover: #F5D061;
+    --dark-card: #3A3B3C;
+
+    --light-color: #F5F5F5;
+    --light-icon-color: #FFDE59;
+    --light-font-color: #121212;
+    --light-hover-color: #30475E;
+    --light-hover-background-color: #F05454;
+
+
+  }
+  
+  /* ------------ BASE ------------ */
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body{
+
+    background-color: var(--light-color);
+  }
+  
+  /* -------------- BUTTON -------------- */
+.btn__indicator {
+
+    width: 1.6em;
+    height: 1.6em;
+    margin: 0 0.1em; /* Tambahkan sedikit margin agar tidak keluar border */
+    border-radius: 50%;
+    transition: transform .3s ease;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+  .btn__icon-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn__icon {
+    color: var(--light-font-color);
+    font-size: 2rem; /* Sesuaikan ukuran */
+}
+  /* -------------- ANIMATION ------------ */
+  .btn__icon.animated{
+    animation: spin 0.5s;
+  }
+
+  /* -------------- DARKMODE -------------- */
+  body.darkmode{
+    background-color: var(--dark-color);
+  }
+
+  .darkmode .btn__indicator{
+    box-shadow: 0 8px 40px rgba(0,0,0, .3);
+  }
+
+  .darkmode .btn__icon{
+    color: var(--dark-font);
+  }
+
+  /* -------------- Bagian Atas Fix -------------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background-color: transparent;
+    backdrop-filter: blur(50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.darkmode .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background-color: transparent;
+    backdrop-filter: blur(50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    color:var(--light-font-color);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: default;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+}
+
+.darkmode .logo {
+    font-size: 25px;
+    color:var(--dark-font);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: default;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+}
+
+.navbar a {
+    color: var(--light-font-color); /* Warna teks default */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px 25px; /* Padding untuk meningkatkan area klik */
+    display: inline-block; /* Agar padding berfungsi dengan baik */
+    transition: background-color 0.3s, color 0.3s; /* Transisi halus untuk latar belakang dan warna teks */
+    border-radius: 50px; /* Tetapkan border radius default */
+}
+
+.navbar a:hover {
+    background-color: var(--light-hover-color); /* Ganti dengan warna latar belakang yang diinginkan saat hover */
+    color: var(--light-hover-background-color); /* Ganti dengan warna teks yang diinginkan saat hover */
+
+}
+
+.darkmode .navbar a {
+    color: #fff; /* Warna teks default */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px 25px; /* Padding untuk meningkatkan area klik */
+    display: inline-block; /* Agar padding berfungsi dengan baik */
+    transition: background-color 0.3s, color 0.3s; /* Transisi halus untuk latar belakang dan warna teks */
+    border-radius: 50px; /* Tetapkan border radius default */
+}
+
+.darkmode .navbar a:hover {
+    background-color: var(--dark-font-hover); /* Ganti dengan warna latar belakang yang diinginkan saat hover */
+    color: var(--dark-hover); /* Ganti dengan warna teks yang diinginkan saat hover */
+
+}
+
+.navbar.active {
+    display: flex; /* Tampilkan navbar */
+    opacity: 1;
+    flex-direction: column; /* Tumpuk item secara vertikal */
+    position: absolute; /* Memastikan navbar dapat diposisikan */
+    top: 60px; /* Sesuaikan dengan tinggi header */
+    left: 10%; /* Sesuaikan dengan padding */
+    right: 10%;
+    background-color: rgba(10, 25, 47, 0.9); /* Latar belakang semi-transparan */
+    padding: 20px; /* Padding untuk isi navbar */
+}
+.darkmode .navbar.active {
+    display: flex; /* Tampilkan navbar */
+    opacity: 1;
+    flex-direction: column; /* Tumpuk item secara vertikal */
+    position: absolute; /* Memastikan navbar dapat diposisikan */
+    top: 60px; /* Sesuaikan dengan tinggi header */
+    left: 10%; /* Sesuaikan dengan padding */
+    right: 10%;
+    background-color: rgba(10, 25, 47, 0.9); /* Latar belakang semi-transparan */
+    padding: 20px; /* Padding untuk isi navbar */
+}
+
+.hamburger {
+    display: none; /* Sembunyikan hamburger secara default */
+    cursor: pointer;
+    font-size: 28px; /* Ukuran ikon */
+    color: var(--light-font-color); /* Warna ikon */
+}
+
+.darkmode .hamburger {
+    display: none; /* Sembunyikan hamburger secara default */
+    cursor: pointer;
+    font-size: 28px; /* Ukuran ikon */
+    color: #fff; /* Warna ikon */
+}
+  /* -------------- Bagian 1 -------------- */
+
+.home {
+    display: flex;
+    justify-content: space-between; /* Membuat tulisan di kiri dan foto di kanan */
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding: 0 10%;
+}
+
+.home-content {
+    max-width: 50%;
+}
+
+.home-content h3 {
+    font-size: 32px;
+    font-weight: 700;
+    opacity: 0;
+    color: var(--light-font-color);
+}
+
+.home-content h2 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    opacity: 0; /* Tambahkan opacity untuk animasi */
+}
+
+
+.home-content h2 span {
+    color: var(--light-hover-background-color);
+}
+
+.darkmode .home-content h2 span {
+    color: var(--dark-font-hover);
+}
+
+.home-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin: -3px 0;
+    opacity: 0;
+
+}
+
+.darkmode .home-content h1 {
+    color: var(--dark-font);
+    font-size: 48px;
+    font-weight: 700;
+    margin: -3px 0;
+    opacity: 0;
+
+}
+
+.darkmode .home-content h3 {
+    color: var(--dark-font);
+}
+
+.darkmode .home-content h2 {
+    color: var(--dark-font);
+}
+
+.home-content p {
+    font-size: 18px;
+    color: var(--light-font-color);
+    opacity: 0;
+
+}
+
+.darkmode .home-content p {
+    font-size: 18px;
+    color: var(--dark-font);
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-sci {
+    margin-top: 20px;
+    position: relative; /* Tambahkan ini untuk menempatkan tooltip relatif */
+}
+
+.home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid var(--light-hover-background-color);
+    border-radius: 50%;
+    font-size: 20px;
+    color: var(--light-hover-background-color);
+    text-decoration: none;
+    margin: 30px 15px 30px 0;
+    transition: .5s ease;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    position: relative; /* Tambahkan ini untuk tooltip */
+}
+
+.home-sci a:hover {
+    background: var(--light-hover-background-color);
+    color: var(--light-color);
+    box-shadow: 0 0 20px var(--light-hover-background-color);
+}
+
+.darkmode .home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid var(--dark-font-hover);
+    border-radius: 50%;
+    font-size: 20px;
+    color: var(--dark-font-hover);
+    text-decoration: none;
+    margin: 30px 15px 30px 0;
+    transition: .5s ease;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    position: relative; /* Tambahkan ini untuk tooltip */
+}
+
+.darkmode .home-sci a:hover {
+    background: var(--dark-font-hover);
+    color: var(--dark-font);
+    box-shadow: 0 0 20px var(--dark-font-hover);
+}
+
+.home-image, .about-img {
+    position: relative;
+}
+
+.home-image img {
+    object-fit: cover;
+    object-position: center; /* Memusatkan objek */
+    width: 400px;
+    height: 400px;
+    border-radius: 50%; /* Tetap menjaga bentuk lingkaran */
+    object-fit: cover; /* Agar gambar tetap proporsional */
+    margin: 0 auto; /* Mengatur gambar ke tengah */
+    z-index: 1; /* Pastikan gambar di depan elemen lain */
+    position: relative; /* Hindari positioning absolut yang bisa menyebabkan tumpang tindih */
+    animation: fadeIn 1.2s ease-out forwards; /* Menambahkan animasi */
+}
+
+.home-content h3.animate {
+    animation: slideBottom 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
+    animation-delay: .7s;
+}
+
+.home-content h1.animate {
+    animation: slideRight 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
+    animation-delay: .4s;
+}
+
+.home-content h2.animate {
+    animation: slideTop 1s ease forwards;
+    animation-delay: .4s;
+}
+.home-content p.animate {
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+
+/* Tooltip styles */
+.home-sci a::after {
+    content: attr(data-tooltip); /* Ambil teks dari atribut data-tooltip */
+    position: absolute;
+    bottom: 50px; /* Jarak dari ikon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--light-hover-background-color); /* Warna latar belakang tooltip */
+    color: var(--light-color); /* Warna teks tooltip */
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap; /* Agar teks tidak terputus */
+    opacity: 0; /* Mulai tidak terlihat */
+    visibility: hidden; /* Sembunyikan tooltip */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transisi halus */
+    z-index: 10; /* Pastikan tooltip di atas elemen lain */
+}
+
+.darkmode .home-sci a::after {
+    content: attr(data-tooltip); /* Ambil teks dari atribut data-tooltip */
+    position: absolute;
+    bottom: 50px; /* Jarak dari ikon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--dark-font-hover); /* Warna latar belakang tooltip */
+    color: var(--light-color); /* Warna teks tooltip */
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap; /* Agar teks tidak terputus */
+    opacity: 0; /* Mulai tidak terlihat */
+    visibility: hidden; /* Sembunyikan tooltip */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transisi halus */
+    z-index: 10; /* Pastikan tooltip di atas elemen lain */
+}
+
+.home-sci a:hover::after {
+    opacity: 1; /* Tampilkan tooltip saat hover */
+    visibility: visible; /* Ubah visibilitas saat hover */
+}
+
+.tombol {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background-color: var(--light-hover-color);
+    border: none;
+    color: var(--light-color);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 2s;
+    box-shadow: 0 0 5px var(--light-hover-color), 0 0 25px var(--light-hover-color);
+}
+
+.tombol:hover {
+    background-color: var(--light-hover-color); /* Hover efek untuk tombol */
+    box-shadow: 0 0 5px var(--light-font-color), 0 0 10px var(--light-font-color), 0 0 15px var(--light-hover-color), 0 0 20px var(--light-hover-color), 0 0 50px var(--light-font-color);
+}
+
+.darkmode .tombol {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background-color: var(--dark-hover);
+    border: none;
+    color: var(--dark-font);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 2s;
+    box-shadow: 0 0 5px var(--dark-hover), 0 0 25px var(--light-hover-color);
+}
+
+.darkmode .tombol:hover {
+    background-color: var(--dark-hover); /* Hover efek untuk tombol */
+    box-shadow: 0 0 5px var(--dark-color), 0 0 10px var(--dark-color), 0 0 15px var(--dark-color), 0 0 20px var(--dark-font), 0 0 50px var(--dark-color);
+}
+
+  /* -------------- Bagian 2 -------------- */
+  .about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+    padding: 50px; /* Menambahkan padding untuk ruang */
+    background-color: var(--light-color); /* Background untuk kontras */
+}
+
+  .darkmode .about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+    padding: 50px; /* Menambahkan padding untuk ruang */
+    background-color: var(--dark-color); /* Background untuk kontras */
+}
+
+.about-img img {
+    object-fit: cover;
+    object-position: center; /* Memusatkan objek */
+    width: 400px;
+    height: 400px;
+    border-radius: 50%; /* Tetap menjaga bentuk lingkaran */
+    object-fit: cover; /* Agar gambar tetap proporsional */
+    margin: 0 auto; /* Mengatur gambar ke tengah */
+    z-index: 1; /* Pastikan gambar di depan elemen lain */
+    position: relative; /* Hindari positioning absolut yang bisa menyebabkan tumpang tindih */
+    animation: fadeIn 1.2s ease-out forwards; /* Menambahkan animasi */
+}
+
+.about-text h2 span {
+    color: var(--light-hover-background-color); /* Warna lebih terang untuk penekanan */
+}
+
+.darkmode .about-text h2 span {
+    color: var(--dark-font-hover); /* Warna lebih terang untuk penekanan */
+}
+
+.about-text h2 {
+    font-size: 40px;
+    margin-top: 50px;
+    color: var(--light-font-color); /* Pastikan teks terlihat di background gelap */
+    animation: slideBottom 1s ease forwards;
+    animation-delay: .7s;
+}
+
+.darkmode .about-text h2 {
+    font-size: 40px;
+    margin-top: 50px;
+    color: var(--dark-font); /* Pastikan teks terlihat di background gelap */
+    animation: slideBottom 1s ease forwards;
+    animation-delay: .7s;
+}
+
+.about-text h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--light-hover-background-color); /* Warna untuk membuatnya menonjol */
+    line-height: 1.7;
+    margin: 10px 0 10px;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.darkmode .about-text h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark-font-hover); /* Warna untuk membuatnya menonjol */
+    line-height: 1.7;
+    margin: 10px 0 10px;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.about-text p {
+    color: var(--light-font-color);
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+    animation: slideTop 1s ease forwards;
+    animation-delay: .7s;
+}
+
+.darkmode .about-text p {
+    color: var(--dark-font);
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+    animation: slideTop 1s ease forwards;
+    animation-delay: .7s;
+}
+/* Reset animasi */
+.about-img img,
+.about-text h2,
+.about-text h4,
+.about-text p {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.7s ease;
+}
+
+/* Class untuk animasi ketika scroll */
+.about-img img.animate {
+    animation: fadeInRotate 2s ease forwards;
+}
+
+.about-text h2.animate {
+    animation: fadeInScale 2s ease forwards;
+}
+
+.about-text h4.animate {
+    animation: fadeInLeft 2s ease forwards;
+}
+
+.about-text p.animate {
+    animation: fadeInRotate 2s ease forwards;
+}
+
+/* Animasi custom untuk gambar */
+.about-img img.animate {
+    animation: fadeInRotate 2s ease forwards;
+}
+
+/* Smooth scroll behavior untuk halaman */
+html {
+    scroll-behavior: smooth;
+}
+
+  /* -------------- Bagian 3 -------------- */
+
+#services {
+    color: aliceblue;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 4rem;
+    background-color: var(--light-color); /* Latar belakang untuk mode terang */
+}
+
+.darkmode #services {
+    background-color: var(--dark-color); /* Latar belakang untuk mode gelap */
+}
+
+.container h1 {
+    color: var(--light-font-color);
+}
+
+.darkmode .container h1 {
+    color: var(--dark-font);
+}
+
+.sub-title {
+    text-align: center;
+    font-size: 40px;
+    padding-bottom: 70px;
+}
+
+.sub-title span {
+    color: var(--light-hover-background-color);
+}
+
+.darkmode .sub-title span {
+    color: var(--dark-font-hover);
+}
+
+.container {
+    padding: 90px 20px; /* Tambahkan padding samping untuk responsif */
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
+    gap: 50px; /* Kurangi jarak antar kotak */
+    margin-top: 0px;
+    padding: 50px;
+}
+
+.services-list div {
+    padding: 20px; /* Kurangi padding */
+    font-size: 13px;
+    font-weight: 13px;
+    border-radius: 20px;
+    background-color: var(--light-hover-color);
+    transition: background 0.5s, transform 0.5s;
+    box-shadow: 1px 1px 20px var(--light-hover-color), 1px 1px 40px var(--light-hover-color);
+}
+
+.darkmode .services-list div {
+    background-color: var(--dark-card);
+    transition: background 0.5s, transform 0.5s;
+    box-shadow: 1px 1px 20px var(--dark-color), 1px 1px 40px var(--dark-color);
+}
+
+.services-list div:hover {
+    background-color: var(--light-hover-color); /* Efek hover yang ringan */
+    transform: translateY(-10px); /* Sedikit mengangkat saat hover */
+    cursor: pointer;
+}
+
+.darkmode .services-list div:hover {
+    background-color: var(--dark-card); /* Efek hover yang ringan */
+
+}
+
+.services-list div p {
+    text-align: justify;
+}
+
+.services-list div i {
+    font-size: 50px;
+    margin-bottom: 30px;
+    color: var(--dark-font);
+}
+
+.services-list div h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+/* Reset animasi */
+
+.container h1,
+.services-list {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.7s ease;
+}
+
+.container h1.animate {
+    animation: fadeIn 2s ease forwards;
+}
+.services-list.animate {
+    animation: fadeInRotate 2s ease forwards;
+}
+
+
+  /* -------------- Bagian 4 -------------- */
+
+#skills {
+    color: aliceblue;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Kolom otomatis */
+    gap: 50px;
+    padding: 50px;
+}
+
+.skill-box {
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: var(--light-hover-color);
+    box-shadow: 0px 4px 20px var(--light-hover-color), 0px 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.darkmode .skill-box {
+    background-color: var(--dark-card);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5), 0px 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.skill-box:hover {
+    transform: translateY(-10px); /* Small lift effect */
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5), 0px 12px 45px rgba(0, 0, 0, 0.3); /* Shadow intensifies */
+}
+
+.skill-box i {
+    font-size: 50px; /* Icon size */
+    color: #e0e4ef; /* Icon color */
+    margin-bottom: 10px;
+}
+
+.skill-box h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: aliceblue;
+    margin-top: 10px;
+}
+/* Default untuk skill-box */
+.skill-box {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.7s ease;
+}
+
+/* Ketika skill-box terlihat di layar */
+.skill-box.animate {
+    animation: fadeInScale 1s ease forwards;
+}
+.container1 h1 {
+    opacity: 0;
+    transform: translateX(-20px); /* Posisi awal dari kiri */
+    transition: all 0.7s ease;
+}
+
+/* Ketika h1 terlihat di layar */
+.container1 h1.animate {
+    animation: fadeInScale 1s ease forwards;
+}
+
+
+
+
+  /* -------------- Bagian 5 PROJECT -------------- */
+
+/* Struktur grid untuk tampilan default */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+    
+}
+
+/* Card */
+.project-card {
+    background: var(--light-hover-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: 1px 1px 20px var(--dark-color), 1px 1px 40px var(--dark-font);
+}
+
+.darkmode .project-card {
+    background-color: var(--dark-card);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5), 0px 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px; /* Berikan sedikit radius pada gambar agar tidak terlihat terlalu tajam */
+}
+
+.project-info {
+    padding: 1.5rem 1rem; /* Tambahkan padding vertikal dan horizontal di dalam info */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem; /* Tambahkan jarak bawah */
+}
+
+.tech-stack {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: var(--light-hover-background-color);
+}
+
+.darkmode .tech-stack {
+    color: var(--dark-font-hover);
+}
+
+.tech-stack .dot {
+    width: 4px;
+    height: 4px;
+    background-color: #666;
+    border-radius: 50%;
+}
+
+.project-description {
+    color: #cccccc;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1rem; /* Tambahkan jarak atas untuk link agar tidak terlalu mepet */
+    border-top: 1px solid #333; /* Tambahkan garis pemisah atas untuk link */
+}
+
+.project-links a {
+    color: #b3b3b3;
+    transition: color 0.3s ease;
+}
+
+.project-links a:hover {
+    color: #ffffff;
+}
+
+.sub-title{
+    color: var(--light-font-color);
+    font-weight: bold;
+    margin-top: 2em;
+}
+
+.darkmode .sub-title{
+    color: var(--dark-font);
+    font-weight: bold;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(20px);
+}
+
+/* Gaya gambar dalam modal */
+.modal.show {
+    display: flex; /* Modal terlihat saat dibuka */
+    opacity: 1; /* Opacity ke 1 saat modal dibuka */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    border-radius: 10px;
+    transform: scale(0);
+    transition: transform 0.6s ease;
+    animation: zoom 0.6s forwards;
+}
+
+.modal.show .modal-content {
+    transform: scale(1); /* Gambar membesar menjadi ukuran normal */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Transition untuk memperhalus efek modal */
+.modal-content {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+/* Default state untuk elemen judul dan project-card */
+.sub-title,
+.project-card {
+    opacity: 0;
+    transform: translateY(20px); /* Posisi awal dari bawah */
+    transition: all 0.7s ease;
+}
+
+/* Ketika elemen terlihat di layar */
+.sub-title.animate {
+    animation: fadeInScale 1s ease forwards;
+}
+
+.project-card.animate {
+    animation: fadeInFromBottom 1s ease forwards;
+    transition-delay: 0.2s; /* Menambah sedikit jeda untuk efek */
+}
+
+
+
+.layer{
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba( 0,0,0,0.1),#1a1517);
+    position: absolute;
+    border-radius: 8px;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 40px;
+    transition: height 0.5s;
+    
+
+} 
+
+.layer a {
+    text-decoration: none; /* Menghilangkan garis bawah */
+}
+
+.layer h5{
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+
+}
+
+.layer p{
+    color: #000;
+    font-size: 1rem;
+    line-height: 1.8;
+
+}
+
+.layer i {
+    color: #fff; /* Warna ikon */
+    margin-top: 20px;
+    font-size: 40px; /* Ukuran ikon lebih besar */
+    width: 70px; /* Sesuaikan lebar ikon */
+    height: 70px; /* Sesuaikan tinggi ikon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; 
+}
+
+.project-image:hover img{
+    transform: scale(1.1);
+
+}
+
+.project-image:hover .layer{
+    height: 100%;
+}
+
+/* Animasi untuk setiap row */
+.portfolio-grid .project-image {
+    opacity: 0; /* Awalnya tidak terlihat */
+    transform: translateY(20px); /* Mulai dari posisi sedikit di bawah */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Transisi halus */
+}
+
+.portfolio-grid .project-image.active {
+    opacity: 1; /* Menjadi terlihat */
+    transform: translateY(0); /* Kembali ke posisi semula */
+}
+
+  /* -------------- Bagian 6 -------------- */
+
+.contact{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 3rem;
+    padding-left: 30px;
+    padding-top: 100px;
+    margin-top: 130px;
+}
+
+.contact-text h2{
+    font-size: 90px;
+    line-height: 1;
+    text-align: center;
+}
+
+.darkmode .contact-text h2{
+    font-size: 90px;
+    line-height: 1;
+    text-align: center;
+    color: var(--dark-font);
+}
+
+.contact-text h2 span{
+    color: var(--light-hover-background-color);
+}
+
+.darkmode .contact-text h2 span{
+    color: var(--dark-font-hover);
+}
+
+.contact-text h4{
+    margin: 15px 0;
+    color: var(--light-hover-color);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.darkmode .contact-text h4{
+    margin: 15px 0;
+    color: var(--dark-hover);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.contact-text p{
+    color: var(--dark-card);
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 2rem;
+}
+.darkmode .contact-text p{
+    color: var(--dark-font);
+}
+
+.contact-list{
+    margin-bottom: 3rem;
+}
+
+.contact-list li{
+    margin-bottom: 10px;
+    display: block;
+    color: var(--light-font-color);
+}
+
+.darkmode .contact-list li{
+    margin-bottom: 10px;
+    display: block;
+    color: var(--dark-font);
+}
+
+.contact-list i{
+    display: inline-block;
+    color: var(--light-hover-color);
+    font-size: 20px;
+    font-weight: 600;
+    transition: all .40s ease;
+
+}
+.darkmode .contact-list i{
+    display: inline-block;
+    color: var(--dark-font-hover);
+    font-size: 20px;
+    font-weight: 600;
+    transition: all .40s ease;
+
+}
+
+.contact-list li a:hover{
+    transform: scale(1.01) translateY(-5px);
+    color: #FAEF5D;
+}
+
+.contact-form {
+    padding: 20px; /* Adding padding inside the form for spacing */
+    margin: 0 auto; /* Centering the form horizontally */
+    max-width: 600px; /* Setting a maximum width to avoid stretching too much on large screens */
+}
+
+/* Adjustments for inputs and textarea to provide spacing */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%; /* Make inputs take full width */
+    padding: 10px;
+    margin-bottom: 20px; /* Add spacing between each input field */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Button styling */
+.contact-form .send {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--light-hover-color);
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.darkmode .contact-form .send {
+    background-color: var(--dark-hover);
+}
+
+.last-text p{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(50px);
+    font-weight: 300;
+    margin-top: 70px;
+    color: var(--light-font-color); /* Warna terang */
+}
+
+.darkmode .last-text p{
+    color: var(--dark-font);
+}
+
+@keyframes fadeInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.contact-text h2.animate {
+    animation: fadeInDown 1s ease forwards;
+}
+
+.contact-text h4.animate {
+    animation: fadeInFromLeft 1s ease forwards;
+    transition-delay: 0.2s; /* Delay sedikit untuk h4 */
+}
+
+.contact-text p.animate {
+    animation: fadeInFromRight 1s ease forwards;
+    transition-delay: 0.4s; /* Delay lebih lama untuk p */
+}
+
+
+.top {
+    position: fixed;
+    bottom: 2.1rem;
+    right: 2.1rem;
+}
+
+.top i {
+    padding: 10px;
+    border-radius: 3rem;
+}
+
+.top i {
+    color: var(--light-color);
+    background: var(--light-font-color);
+}
+
+.darkmode .top i {
+    color: var(--dark-color);
+    background: var(--dark-font);
+}
+
+/* Keyframes untuk animasi fadeInFromBottom */
+@keyframes fadeInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8); /* Mulai dari ukuran lebih kecil */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* Berakhir pada ukuran asli */
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px); /* Mulai sedikit di atas */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Berakhir di posisi aslinya */
+    }
+}
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px); /* Mulai sedikit di kiri */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Berakhir di posisi aslinya */
+    }
+}
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20px); /* Mulai sedikit di kanan */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Berakhir di posisi aslinya */
+    }
+}
+
+
+
+@keyframes fadeInRotate {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes spin{
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideTop {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideBottom {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+/* Animasi untuk h2 (fade-in dari kiri) */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px); /* Mulai dari kiri */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Berhenti di posisi normal */
+    }
+}
+
+/* Animasi untuk h4 (fade-in dari kanan) */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px); /* Mulai dari kanan */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Berhenti di posisi normal */
+    }
+}
+
+/* Animasi untuk p (fade-in dari bawah) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Mulai dari bawah */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Berhenti di posisi normal */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media query untuk responsif */
+/* CSS untuk tampilan mobile */
+@media (max-width: 768px) {
+/* CSS untuk navbar */
+.navbar {
+    display: none; /* Navbar is hidden by default */
+    background-color: transparent; /* Default background is transparent */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.darkmode .navbar {
+    display: none; /* Navbar is hidden by default */
+    background-color: rgba(30, 30, 30, 0.9); /* Contoh warna gelap dengan transparansi */
+}
+
+.navbar.active,
+.darkmode .navbar.active {
+    display: flex; /* Show navbar when active */
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center align items */
+    gap: 20px; /* Space between items */
+    backdrop-filter: blur(50px); /* Apply blur effect */
+    background-color: rgba(30, 30, 30, 0.9); /* Contoh latar belakang gelap */
+    top: 0; /* Position at the top */
+    left: 0; /* Align to the left */
+    right: 0; /* Align to the right */
+    padding: 15px; /* Padding for the navbar */
+}
+
+.navbar a,
+.darkmode .navbar a {
+    margin-bottom: 8px;
+    padding: 8px;
+    width: 100%;
+    color: #ffffff; /* Warna teks putih untuk kontras */
+}
+
+/* Pastikan .hamburger terlihat di dark mode */
+.hamburger,
+.darkmode .hamburger {
+    display: block; /* Tampilkan di mobile */
+    position: absolute; /* Sesuaikan agar tidak bergeser */
+    right: 5%; /* Sesuaikan posisi sesuai layout */
+    z-index: 101; /* Di atas elemen lainnya */
+}
+
+.btn {
+    position: absolute; /* Tetapkan posisi agar tidak mempengaruhi elemen lain */
+    right: 40%; /* Sesuaikan sesuai kebutuhan */
+    z-index: 101; /* Agar tidak tertimpa elemen lain */
+}
+
+
+.home {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px; /* Tambahkan padding untuk memberikan ruang */
+}
+
+.home-content {
+    max-width: 100%;
+    margin-top: 100px; /* Menyesuaikan margin atas di tampilan mobile */
+}
+
+.home-content h3 {
+    font-size: 24px; /* Ukuran font lebih kecil */
+}
+
+.home-content h1 {
+    font-size: 32px; /* Ukuran font lebih kecil */
+}
+
+.darkmode .home-content h1 {
+    font-size: 32px; /* Ukuran font lebih kecil */
+}
+
+.home-image {
+    position: relative; /* Pastikan gambar tidak tertindih */
+    z-index: 0;
+}
+
+.home-image img {
+    display: none; /* Sembunyikan gambar di tampilan mobile */
+}
+
+/* Menyesuaikan elemen blur di background agar tidak menindih gambar */
+.home-image::before {
+    height: 70%; /* Kurangi tinggi background blur */
+    margin-top: 40px;
+    border-radius: 40%;
+    filter: blur(25px); /* Kurangi blur */
+}
+
+.about {
+    grid-template-columns: 1fr; /* Mengubah layout menjadi satu kolom */
+    text-align: center;
+    padding: 15px; /* Mengurangi padding agar tidak terlalu lebar di mobile */
+}
+
+.darkmode .about {
+    grid-template-columns: 1fr; /* Mengubah layout menjadi satu kolom */
+    text-align: center;
+    padding: 15px; /* Mengurangi padding agar tidak terlalu lebar di mobile */
+}
+
+.about-img {
+    margin-top: 55px;
+/* Kurangi margin bawah *//* Pastikan z-index yang benar */
+    align-items: center;
+}
+
+.darkmode .about-img {
+    margin-top: 55px;
+/* Kurangi margin bawah *//* Pastikan z-index yang benar */
+    align-items: center;
+}
+
+.about-img img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; /* Menjaga gambar berbentuk lingkaran */
+    object-fit: cover; /* Agar gambar tetap proporsional */
+    margin: 0 auto; /* Mengatur gambar ke tengah */
+}
+
+.darkmode .about-img img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%; /* Menjaga gambar berbentuk lingkaran */
+    object-fit: cover; /* Agar gambar tetap proporsional */
+    margin: 0 auto; /* Mengatur gambar ke tengah */
+}
+
+.about-text {
+    padding: 15px; /* Memberi jarak di sekitar teks */
+}
+
+.darkmode .about-text {
+    padding: 15px; /* Memberi jarak di sekitar teks */
+}
+
+.skills-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom pada mobile */
+    gap: 20px; /* Mengurangi jarak antar box */
+    padding: 0 10px; /* Menghilangkan padding kiri-kanan agar sesuai layar */
+}
+
+.darkmode .skills-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom pada mobile */
+    gap: 20px; /* Mengurangi jarak antar box */
+    padding: 0 10px; /* Menghilangkan padding kiri-kanan agar sesuai layar */
+}
+
+.skill-box {
+    padding: 15px; /* Mengurangi padding di dalam skill-box */
+}
+
+.darkmode .skill-box {
+    padding: 15px; /* Mengurangi padding di dalam skill-box */
+}
+
+.skill-box i {
+    font-size: 40px; /* Mengurangi ukuran ikon pada mobile */
+}
+
+.darkmode .skill-box i {
+    font-size: 40px; /* Mengurangi ukuran ikon pada mobile */
+}
+
+.skill-box h2 {
+    font-size: 18px; /* Mengurangi ukuran teks pada mobile */
+}
+
+.darkmode .skill-box h2 {
+    font-size: 18px; /* Mengurangi ukuran teks pada mobile */
+}
+
+.portfolio-grid {
+    grid-template-columns: repeat(2, 1fr); /* Tampilkan dua kolom pada layar kecil */
+    gap: 1rem; /* Kurangi jarak antar-kartu */
+}
+
+.project-card {
+    padding: 0.8rem; /* Kurangi padding pada kartu di mode mobile */
+}
+
+.project-info {
+    padding: 1rem 0.8rem; /* Kurangi padding vertikal dan horizontal */
+}
+
+.project-title h3 {
+    font-size: 1rem; /* Ukuran font lebih kecil untuk judul */
+}
+
+.project-description {
+    font-size: 0.8rem; /* Ukuran font lebih kecil untuk deskripsi */
+    margin-bottom: 0.5rem; /* Kurangi jarak bawah */
+}
+
+.tech-stack {
+    font-size: 0.8rem; /* Ukuran font lebih kecil untuk tech stack */
+}
+
+.project-links {
+    padding-top: 0.5rem; /* Kurangi padding atas */
+}
+
+.darkmode .project-card {
+    padding: 0.8rem; /* Kurangi padding pada kartu di mode mobile */
+}
+
+.darkmode .project-info {
+    padding: 1rem 0.8rem; /* Kurangi padding vertikal dan horizontal */
+}
+
+.darkmode .project-title h3 {
+    font-size: 1rem; /* Ukuran font lebih kecil untuk judul */
+}
+
+.darkmode .project-description {
+    font-size: 0.8rem; /* Ukuran font lebih kecil untuk deskripsi */
+    margin-bottom: 0.5rem; /* Kurangi jarak bawah */
+}
+
+.darkmode .tech-stack {
+    font-size: 0.8rem; /* Ukuran font lebih kecil untuk tech stack */
+}
+
+ .contact {
+        grid-template-columns: 1fr; /* One column for mobile */
+        padding-left: 10px; /* Smaller padding */
+        padding-top: 40px; /* Smaller padding */
+        margin-top: 40px; /* Smaller margin */
+    }
+
+    .contact-text,
+    .contact-form {
+        padding-left: 15px; /* Add padding to the left for better spacing */
+        padding-right: 15px; /* Optional: Add padding to the right */
+    }
+
+    .contact-text h2 {
+        font-size: 40px; /* Smaller font size */
+    }
+
+    .contact-text h4,
+    .contact-text p {
+        font-size: 14px; /* Smaller font size */
+    }
+
+    .contact-list li {
+        font-size: 14px; /* Smaller font size for contact list */
+        color: var(--dark-color);
+    }
+
+    .darkmode .contact-list li {
+        font-size: 14px; /* Smaller font size for contact list */
+        color: var(--dark-font);
+    }
+
+    .contact-form .send {
+        padding: 8px 20px; /* Smaller button padding */
+        font-size: 12px; /* Smaller font size for button */
+    }
+
+
+/* Desktop styles for contact section text */
+.contact-text {
+    padding-left: 15px; /* Add padding to the left for desktop */
+    padding-right: 15px; /* Optional: Add padding to the right */
+}
+
+.darkmode .contact-text {
+    padding-left: 15px; /* Add padding to the left for desktop */
+    padding-right: 15px; /* Optional: Add padding to the right */
+}
+
+.contact-text h2 {
+    font-size: 90px; /* Larger font size */
+    line-height: 1;
+    text-align: center;
+}
+
+.darkmode .contact-text h2 {
+    font-size: 90px; /* Larger font size */
+    line-height: 1;
+    text-align: center;
+}
+
+.contact-text h2 span {
+    color: var(--light-hover-background-color);
+}
+
+.contact-text h4 {
+    margin: 15px 0;
+    color: var(--light-hover-color);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.darkmode .contact-text h4 {
+    margin: 15px 0;
+    color: var(--light-hover-color);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.contact-text p {
+    color: var(--dark-card);
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 2rem;
+}
+
+.darkmode .contact-text p {
+    color: var(--dark-card);
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 2rem;
+}
+
+.contact-list {
+    margin-bottom: 3rem;
+}
+
+.contact-list li {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.contact-list i {
+    display: inline-block;
+    color: var(--light-hover-background-color);
+    font-size: 20px;
+    font-weight: 600;
+    transition: all .40s ease;
+}
+
+.contact-list li a:hover {
+    transform: scale(1.01) translateY(-5px);
+    color: var(--light-hover-background-color);
+}
+
+/* Contact form styles */
+.contact-form {
+    padding: 20px; /* Padding inside form for spacing */
+    margin: 0 auto; /* Centering the form */
+    max-width: 600px; /* Maximum width */
+}
+
+/* Adjustments for inputs and textarea */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%; /* Full width */
+    padding: 10px;
+    margin-bottom: 20px; /* Space between fields */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Button styling */
+.contact-form .send {
+    width: 100%;
+    padding: 10px;
+    background-color: #7E2553;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+}
