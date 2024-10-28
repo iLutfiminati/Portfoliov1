@@ -205,7 +205,7 @@
 }
 
 .home-content h3 {
-    font-size: 32px;
+    font-size: 25px;
     font-weight: 700;
     opacity: 0;
     color: var(--light-font-color);
@@ -228,7 +228,7 @@
 }
 
 .home-content h1 {
-    font-size: 48px;
+    font-size: 50px;
     font-weight: 700;
     margin: -3px 0;
     opacity: 0;
@@ -237,11 +237,6 @@
 
 .darkmode .home-content h1 {
     color: var(--dark-font);
-    font-size: 48px;
-    font-weight: 700;
-    margin: -3px 0;
-    opacity: 0;
-
 }
 
 .darkmode .home-content h3 {
@@ -582,7 +577,6 @@ html {
 
 #services {
     color: aliceblue;
-    font-size: 20px;
     line-height: 1.4;
     margin-bottom: 4rem;
     background-color: var(--light-color); /* Latar belakang untuk mode terang */
@@ -590,14 +584,6 @@ html {
 
 .darkmode #services {
     background-color: var(--dark-color); /* Latar belakang untuk mode gelap */
-}
-
-.container h1 {
-    color: var(--light-font-color);
-}
-
-.darkmode .container h1 {
-    color: var(--dark-font);
 }
 
 .sub-title {
@@ -680,6 +666,7 @@ html {
 .container h1.animate {
     animation: fadeIn 2s ease forwards;
 }
+
 .services-list.animate {
     animation: fadeInRotate 2s ease forwards;
 }
@@ -727,7 +714,7 @@ html {
 }
 
 .skill-box h2 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: aliceblue;
     margin-top: 10px;
@@ -743,10 +730,12 @@ html {
 .skill-box.animate {
     animation: fadeInScale 1s ease forwards;
 }
+
 .container1 h1 {
     opacity: 0;
     transform: translateX(-20px); /* Posisi awal dari kiri */
     transition: all 0.7s ease;
+    font-size: 40px;
 }
 
 /* Ketika h1 terlihat di layar */
@@ -768,6 +757,10 @@ html {
     margin: 0 auto;
     padding: 1rem;
     
+}
+
+.project h1{
+    font-size: 40px;
 }
 
 /* Card */
@@ -947,8 +940,6 @@ html {
     transition-delay: 0.2s; /* Menambah sedikit jeda untuk efek */
 }
 
-
-
 .layer{
     width: 100%;
     height: 0;
@@ -1034,15 +1025,13 @@ html {
 }
 
 .contact-text h2{
-    font-size: 90px;
+    font-size: 40px;
     line-height: 1;
     text-align: center;
 }
 
 .darkmode .contact-text h2{
-    font-size: 90px;
-    line-height: 1;
-    text-align: center;
+
     color: var(--dark-font);
 }
 
@@ -1057,23 +1046,21 @@ html {
 .contact-text h4{
     margin: 15px 0;
     color: var(--light-hover-color);
-    font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .darkmode .contact-text h4{
-    margin: 15px 0;
     color: var(--dark-hover);
-    font-weight: 600;
-    font-size: 20px;
+
 }
 
 .contact-text p{
     color: var(--dark-card);
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 18px;
     margin-bottom: 2rem;
+    text-align: justify;
 }
+
 .darkmode .contact-text p{
     color: var(--dark-font);
 }
@@ -1102,6 +1089,7 @@ html {
     transition: all .40s ease;
 
 }
+
 .darkmode .contact-list i{
     display: inline-block;
     color: var(--dark-font-hover);
@@ -1453,6 +1441,8 @@ html {
 }
 
 
+/* Bagian 1 */
+
 .home {
     flex-direction: column;
     text-align: center;
@@ -1540,7 +1530,46 @@ html {
 .darkmode .about-text {
     padding: 15px; /* Memberi jarak di sekitar teks */
 }
+#services {
+    font-size: 18px; /* Ukuran font yang lebih kecil */
+    margin-bottom: 2rem; /* Kurangi margin bawah */
+}
 
+.container {
+    padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
+}
+
+.container h1 {
+    font-size: 34px; /* Kurangi ukuran font judul */
+}
+
+.sub-title {
+    font-size: 30px; /* Kurangi ukuran font untuk sub-judul */
+    padding-bottom: 40px;
+}
+
+.services-list {
+    grid-template-columns: 1fr; /* Tampilan satu kolom di layar kecil */
+    gap: 20px; /* Kurangi jarak antar kotak */
+    padding: 20px;
+}
+
+.services-list div {
+    padding: 15px; /* Kurangi padding pada kotak layanan */
+    font-size: 14px; /* Sesuaikan ukuran font */
+}
+
+.services-list div i {
+    font-size: 40px; /* Kurangi ukuran ikon */
+    margin-bottom: 20px;
+}
+
+.services-list div h2 {
+    font-size: 20px; /* Kurangi ukuran font judul layanan */
+    margin-bottom: 10px;
+}
+
+/* BAGIAN SKIILLS */
 .skills-list {
     grid-template-columns: repeat(2, 1fr); /* 2 kolom pada mobile */
     gap: 20px; /* Mengurangi jarak antar box */
@@ -1628,27 +1657,27 @@ html {
     font-size: 0.8rem; /* Ukuran font lebih kecil untuk tech stack */
 }
 
- .contact {
+.contact {
         grid-template-columns: 1fr; /* One column for mobile */
         padding-left: 10px; /* Smaller padding */
         padding-top: 40px; /* Smaller padding */
         margin-top: 40px; /* Smaller margin */
-    }
+}
 
-    .contact-text,
-    .contact-form {
+.contact-text,
+.contact-form {
         padding-left: 15px; /* Add padding to the left for better spacing */
         padding-right: 15px; /* Optional: Add padding to the right */
-    }
+}
 
-    .contact-text h2 {
+.contact-text h2 {
         font-size: 40px; /* Smaller font size */
-    }
+}
 
-    .contact-text h4,
-    .contact-text p {
+.contact-text h4,
+.contact-text p {
         font-size: 14px; /* Smaller font size */
-    }
+}
 
     .contact-list li {
         font-size: 14px; /* Smaller font size for contact list */
@@ -1678,13 +1707,13 @@ html {
 }
 
 .contact-text h2 {
-    font-size: 90px; /* Larger font size */
+    font-size: 40px; /* Larger font size */
     line-height: 1;
     text-align: center;
 }
 
 .darkmode .contact-text h2 {
-    font-size: 90px; /* Larger font size */
+    font-size: 40px; /* Larger font size */
     line-height: 1;
     text-align: center;
 }
