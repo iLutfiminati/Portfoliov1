@@ -70,7 +70,7 @@ btn.addEventListener('click', () => {
         if (navbar.classList.contains('active')) {
             hamburger.innerHTML = "<i class='bx bx-x'></i>"; // Mengubah ikon menjadi silang
         } else {
-            hamburger.innerHTML = "<i class='bx bx-menu'></i>"; // Kembali ke ikon hamburger
+            hamburger.innerHTML = "<i class='bx bx-menu-alt-right'></i>"; // Kembali ke ikon hamburger
         }
     });
 
