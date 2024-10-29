@@ -1607,8 +1607,8 @@ html {
 }
 
 .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr); /* Tampilkan dua kolom pada layar kecil */
-    gap: 1rem; /* Kurangi jarak antar-kartu */
+    grid-template-columns: repeat(1, 1fr); /* Tampilkan dua kolom pada layar kecil */
+    gap: 3rem; /* Kurangi jarak antar-kartu */
 }
 
 .project-card {
