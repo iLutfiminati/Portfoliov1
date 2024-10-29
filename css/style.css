@@ -1394,6 +1394,8 @@ html {
 /* CSS untuk navbar */
 .navbar {
     display: none; /* Navbar is hidden by default */
+    -webkit-backdrop-filter: blur(10px); /* Safari untuk iOS */
+    backdrop-filter: blur(10px); /* Non-Safari browsers */
     background-color: transparent; /* Default background is transparent */
     transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
