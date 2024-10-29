@@ -1403,26 +1403,44 @@ html {
     background-color: rgba(30, 30, 30, 0.9); /* Contoh warna gelap dengan transparansi */
 }
 
-.navbar.active,
+.navbar.active {
+    display: flex; /* Show navbar when active */
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center align items */
+    gap: 20px; /* Space between items */
+    -webkit-backdrop-filter: blur(10px); /* Safari for iOS */
+    backdrop-filter: blur(10px); /* Non-Safari browsers */
+    background-color: rgba(30, 30, 30, 0.9); /* Contoh latar belakang gelap */
+    left: 0; /* Align to the left */
+    right: 0; /* Align to the right */
+    padding: 15px; /* Padding for the navbar */
+    z-index: 10; /* To be above other elements */
+}
 .darkmode .navbar.active {
     display: flex; /* Show navbar when active */
     flex-direction: column; /* Arrange items vertically */
     align-items: center; /* Center align items */
     gap: 20px; /* Space between items */
-    backdrop-filter: blur(50px); /* Apply blur effect */
-    background-color: rgba(30, 30, 30, 0.9); /* Contoh latar belakang gelap */
-    top: 0; /* Position at the top */
+    -webkit-backdrop-filter: blur(10px); /* Safari for iOS */
+    backdrop-filter: blur(10px); /* Non-Safari browsers */
+    background-color: rgba(255, 255, 255, 0.8); /* Background with transparency */
     left: 0; /* Align to the left */
     right: 0; /* Align to the right */
     padding: 15px; /* Padding for the navbar */
+    z-index: 10; /* To be above other elements */
 }
 
-.navbar a,
+.navbar a {
+    margin-bottom: 8px;
+    padding: 8px;
+    width: 100%;
+    color: var(--light-color); /* Warna teks putih untuk kontras */
+}
 .darkmode .navbar a {
     margin-bottom: 8px;
     padding: 8px;
     width: 100%;
-    color: #ffffff; /* Warna teks putih untuk kontras */
+    color: var(--dark-color); /* Warna teks putih untuk kontras */
 }
 
 /* Pastikan .hamburger terlihat di dark mode */
@@ -1550,7 +1568,7 @@ html {
 
 .services-list {
     grid-template-columns: 1fr; /* Tampilan satu kolom di layar kecil */
-    gap: 20px; /* Kurangi jarak antar kotak */
+    gap: 3rem; /* Kurangi jarak antar kotak */
     padding: 20px;
 }
 
