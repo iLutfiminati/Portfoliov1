@@ -201,6 +201,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const welcomeText = document.querySelector('.home-content h3');
   const socialLinks = document.querySelectorAll('.home-sci a'); // Tambahkan ini
   const descriptionText = document.querySelector('.home-content p');
+  const headreah = document.querySelector('.headera h1');
+  const timelineContents = document.querySelectorAll('.timeline-content');
+  
   
 
   // Buat Intersection Observer
@@ -231,6 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
   observer.observe(welcomeText);
   observer.observe(nameText);
   observer.observe(descriptionText);
+  observer.observe(headreah);
   observer.observe(document.querySelector('.home-content h2')); // Observasi <h2>
 
   projectCards.forEach(card => observer.observe(card)); 
@@ -238,4 +242,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Observe setiap skill-box
   skillBoxes.forEach(skillBox => observer.observe(skillBox));
+  timelineContents.forEach(content => observer.observe(content));
+
 });

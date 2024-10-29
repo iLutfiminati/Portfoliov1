@@ -350,6 +350,7 @@
     animation: slideTop 1s ease forwards;
     animation-delay: .4s;
 }
+
 .home-content p.animate {
     animation: slideLeft 1s ease forwards;
     animation-delay: 1s;
@@ -552,15 +553,18 @@
 }
 
 .about-text h2.animate {
-    animation: fadeInScale 2s ease forwards;
+    animation: slideRight 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
+    animation-delay: .4s;
 }
 
 .about-text h4.animate {
-    animation: fadeInLeft 2s ease forwards;
+    animation: slideLeft 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
+    animation-delay: .2s;
 }
 
 .about-text p.animate {
     animation: fadeInRotate 2s ease forwards;
+    animation-delay: .6s;
 }
 
 /* Animasi custom untuk gambar */
@@ -664,7 +668,8 @@ html {
 }
 
 .container h1.animate {
-    animation: fadeIn 2s ease forwards;
+    animation: slideRight 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
+    animation-delay: .4s;
 }
 
 .services-list.animate {
@@ -740,7 +745,8 @@ html {
 
 /* Ketika h1 terlihat di layar */
 .container1 h1.animate {
-    animation: fadeInScale 1s ease forwards;
+    animation: slideRight 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
+    animation-delay: .4s;
 }
 
 
@@ -858,6 +864,7 @@ html {
     color: var(--light-font-color);
     font-weight: bold;
     margin-top: 2em;
+    font-size: 40px;
 }
 
 .darkmode .sub-title{
@@ -932,7 +939,8 @@ html {
 
 /* Ketika elemen terlihat di layar */
 .sub-title.animate {
-    animation: fadeInScale 1s ease forwards;
+    animation: slideRight 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
+    animation-delay: .4s;
 }
 
 .project-card.animate {
@@ -1132,6 +1140,7 @@ html {
     cursor: pointer;
     border-radius: 5px;
 }
+
 .darkmode .contact-form .send {
     background-color: var(--dark-hover);
 }
@@ -1210,6 +1219,44 @@ html {
 }
 
 /* Keyframes untuk animasi fadeInFromBottom */
+
+@keyframes slideInBottomLeft {
+    0% {
+        opacity: 0;
+        transform: translate(-20px, 20px); /* Mulai dari kiri bawah */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0); /* Kembali ke posisi awal */
+    }
+}
+
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Slide ke bawah */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Posisi awal */
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 @keyframes fadeInFromBottom {
     0% {
         opacity: 0;
@@ -1231,6 +1278,7 @@ html {
         transform: translateX(0);
     }
 }
+
 @keyframes fadeInScale {
     0% {
         opacity: 0;
@@ -1252,6 +1300,7 @@ html {
         transform: translateY(0); /* Berakhir di posisi aslinya */
     }
 }
+
 @keyframes fadeInLeft {
     0% {
         opacity: 0;
@@ -1262,18 +1311,17 @@ html {
         transform: translateX(0); /* Berakhir di posisi aslinya */
     }
 }
+
 @keyframes fadeInRight {
     0% {
         opacity: 0;
-        transform: translateX(20px); /* Mulai sedikit di kanan */
+        transform: translateX(30px); /* Mulai sedikit di kanan */
     }
     100% {
         opacity: 1;
         transform: translateX(0); /* Berakhir di posisi aslinya */
     }
 }
-
-
 
 @keyframes fadeInRotate {
     0% {
@@ -1290,7 +1338,7 @@ html {
     to {
       transform: rotate(360deg);
     }
-  }
+}
 
 @keyframes zoom {
     from {transform: scale(0)}
@@ -1418,6 +1466,7 @@ html {
     padding: 15px; /* Padding for the navbar */
     z-index: 10; /* To be above other elements */
 }
+
 .darkmode .navbar.active {
     display: flex; /* Show navbar when active */
     flex-direction: column; /* Arrange items vertically */
@@ -1438,6 +1487,7 @@ html {
     width: 100%;
     color: var(--light-color); /* Warna teks putih untuk kontras */
 }
+
 .darkmode .navbar a {
     margin-bottom: 8px;
     padding: 8px;
@@ -1821,6 +1871,255 @@ html {
     cursor: pointer;
     border-radius: 5px;
 }
+.timeline-item {
+    width: 100%; /* Memastikan item mengambil lebar penuh */
+    padding-left: 20px; /* Memberikan sedikit jarak dari sisi */
+    padding-right: 20px; /* Memberikan sedikit jarak dari sisi */
+    text-align: left; /* Meratakan teks ke kiri */
+}
+
+.timeline-dot {
+    left: 10%; /* Menyesuaikan posisi dot */
+}
+
+.timeline-content {
+    padding: 15px; /* Mengurangi padding di konten */
+    background-color: var(--light-hover-color);
+    border-radius: 10px; /* Membuat sudut lebih halus */
+    opacity: 0; /* Memastikan opacity awal */
+}
+
+.timeline-content.animate {
+    opacity: 1; /* Mengubah opacity menjadi terlihat */
+    animation: fadeInRotate 0.5s ease forwards; /* Mengubah durasi animasi */
+}
+
+/* Untuk gambar logo, sesuaikan ukurannya */
+.logos {
+    width: 40px; /* Ukuran gambar lebih kecil di mobile */
+    height: 40px; /* Ukuran gambar lebih kecil di mobile */
+}
+
+.role {
+    font-size: 1rem; /* Mengubah ukuran font di mobile */
+}
+
+.company {
+    font-size: 0.9rem; /* Mengubah ukuran font di mobile */
+}
+
+.date {
+    font-size: 0.8rem; /* Mengubah ukuran font di mobile */
+}
 
 
+}
+
+.headera {
+    font-weight: bold;
+    margin-bottom: 160px; /* Menjaga jarak di bawah judul */
+}
+
+.headera h1 {
+    font-size: 40px;
+    margin: 50px 0; /* Menambahkan jarak atas dan bawah */
+    text-align: center;
+    color: var(--light-font-color);
+}
+.darkmode .headera h1 {
+    color: var(--dark-font);
+}
+
+.headera span {
+    color: var(--light-hover-color);
+    padding: 0 5px; /* Menambahkan padding di kiri dan kanan jika perlu */
+}
+.darkmode .headera span {
+    color: var(--dark-hover);
+}
+
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--light-font-color); /* Warna garis */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.darkmode .timeline::after {
+    background-color: var(--dark-font); /* Warna garis */
+
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    
+    /* Menjaga jarak dari garis */
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+/* Animasi untuk timeline-content */
+.timeline-content {
+    padding: 20px 30px;
+    background-color: var(--light-hover-color);
+    border-radius: 15px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    opacity: 0; /* Mulai dengan transparan */
+    transition: opacity 0.5s ease; /* Transisi untuk opacity */
+
+}
+.darkmode .timeline-content {
+    background-color: var(--dark-card);
+}
+
+/* Animasi untuk item di sebelah kiri */
+.timeline-item:nth-child(odd) .timeline-content {
+    animation: slideRight 1s ease forwards;
+}
+
+/* Animasi untuk item di sebelah kanan */
+.timeline-item:nth-child(even) .timeline-content {
+    animation: slideLeft 1s ease forwards;
+}
+
+/* Kelas animate yang ditambahkan saat visible */
+.timeline-content .animate {
+    opacity: 1; /* Menjadi terlihat */
+    animation: fadeInRotate 1s ease forwards; /* Menambahkan animasi */
+}
+
+/* Animasi untuk gambar logo */
+.timeline-content .logos {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.5s ease 0.3s;
+}
+
+.timeline-content.animate .logos {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Animasi untuk teks */
+.timeline-content .role,
+.timeline-content .company,
+.timeline-content .date {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.timeline-content.animate .role {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.timeline-content.animate .company {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.timeline-content.animate .date {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+/* Hover effect */
+.timeline-content {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+.timeline-content img {
+    width: 100%; /* Memastikan gambar mengisi lebar card */
+    height: auto; /* Menjaga aspek rasio gambar */
+    max-width: 100px; /* Menentukan lebar maksimum jika perlu */
+    border-radius: 5px; /* Membulatkan sudut gambar */
+    margin-bottom: 15px; /* Jarak antara gambar dan teks */
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    background-color: var(--light-font-color); /* Warna dot */
+    border-radius: 50%;
+    position: absolute;
+    left: 100%; /* Menjaga titik di tengah garis */
+    transform: translate(-50%, -50%); /* Memastikan titik berada di tengah */
+    top: 50%; /* Memindahkan ke tengah vertikal dari item */
+    z-index: 1;
+    
+}
+.darkmode .timeline-dot {
+    background-color: var(--dark-font); /* Warna dot */
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: 0%; /* Pastikan titik genap juga di tengah */
+    transform: translate(-50%, -50%); /* Pindahkan ke tengah */
+}
+
+.role {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.company {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #aaa;
+}
+
+.date {
+    color: #888;
+    font-size: 0.9rem;
+}
+    
+
+.logos {
+    width: 50px; /* Ukuran gambar bisa disesuaikan */
+    height: 50px; /* Ukuran gambar bisa disesuaikan */
+    object-fit: cover;
+    
+    border-radius: 5px;
+    margin-bottom: 15px; /* Jarak antara gambar dan teks */
+}
+.headera h1 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.7s ease;
+}
+
+.headera h1.animate {
+    animation: slideRight 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
+    animation-delay: .4s;
 }
