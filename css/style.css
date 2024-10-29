@@ -1871,15 +1871,19 @@ html {
     cursor: pointer;
     border-radius: 5px;
 }
+
 .timeline-item {
     width: 100%; /* Memastikan item mengambil lebar penuh */
-    padding-left: 20px; /* Memberikan sedikit jarak dari sisi */
-    padding-right: 20px; /* Memberikan sedikit jarak dari sisi */
+    padding: 10px; /* Memberikan padding yang lebih kecil */
     text-align: left; /* Meratakan teks ke kiri */
+    box-sizing: border-box; /* Memastikan padding dihitung dalam lebar total */
+    margin-bottom: 20px; /* Memberikan jarak antar item */
 }
 
 .timeline-dot {
-    left: 10%; /* Menyesuaikan posisi dot */
+    left: 5%; /* Mengatur posisi dot lebih dekat ke kiri */
+    width: 15px; /* Ukuran dot lebih kecil */
+    height: 15px; /* Ukuran dot lebih kecil */
 }
 
 .timeline-content {
@@ -1887,6 +1891,7 @@ html {
     background-color: var(--light-hover-color);
     border-radius: 10px; /* Membuat sudut lebih halus */
     opacity: 0; /* Memastikan opacity awal */
+    transition: opacity 0.5s ease; /* Transisi untuk efek fade in */
 }
 
 .timeline-content.animate {
@@ -1896,20 +1901,28 @@ html {
 
 /* Untuk gambar logo, sesuaikan ukurannya */
 .logos {
-    width: 40px; /* Ukuran gambar lebih kecil di mobile */
-    height: 40px; /* Ukuran gambar lebih kecil di mobile */
+    width: 40px; /* Ukuran gambar yang lebih kecil di mobile */
+    height: 40px; /* Ukuran gambar yang lebih kecil di mobile */
+    margin-bottom: 10px; /* Jarak antara gambar dan teks */
 }
 
-.role {
-    font-size: 1rem; /* Mengubah ukuran font di mobile */
+.timeline-content .role {
+    font-size: 0.9rem;  /* Ukuran font lebih kecil di mobile */
+    font-weight: bold; /* Menekankan teks peran */
 }
 
-.company {
-    font-size: 0.9rem; /* Mengubah ukuran font di mobile */
+.timeline-content .company {
+    font-size: 0.7rem; /* Ukuran font untuk perusahaan */
+    margin-bottom: 5px; /* Jarak bawah untuk perusahaan */
+    color: var(--dark-font-hover); /* Warna abu-abu untuk teks tanggal */
 }
 
-.date {
-    font-size: 0.8rem; /* Mengubah ukuran font di mobile */
+.timeline-content  .date {
+    font-size: 0.5rem; /* Ukuran font untuk tanggal */
+    color: #888; /* Warna abu-abu untuk teks tanggal */
+}
+.headera h1 {
+    font-size: 24px; /* Ukuran font yang lebih kecil */
 }
 
 
@@ -1926,6 +1939,7 @@ html {
     text-align: center;
     color: var(--light-font-color);
 }
+
 .darkmode .headera h1 {
     color: var(--dark-font);
 }
@@ -1934,10 +1948,10 @@ html {
     color: var(--light-hover-color);
     padding: 0 5px; /* Menambahkan padding di kiri dan kanan jika perlu */
 }
+
 .darkmode .headera span {
     color: var(--dark-hover);
 }
-
 
 .timeline {
     position: relative;
@@ -1955,6 +1969,7 @@ html {
     left: 50%;
     transform: translateX(-50%);
 }
+
 .darkmode .timeline::after {
     background-color: var(--dark-font); /* Warna garis */
 
@@ -1988,6 +2003,7 @@ html {
     transition: opacity 0.5s ease; /* Transisi untuk opacity */
 
 }
+
 .darkmode .timeline-content {
     background-color: var(--dark-card);
 }
@@ -2078,6 +2094,7 @@ html {
     z-index: 1;
     
 }
+
 .darkmode .timeline-dot {
     background-color: var(--dark-font); /* Warna dot */
 }
@@ -2113,6 +2130,7 @@ html {
     border-radius: 5px;
     margin-bottom: 15px; /* Jarak antara gambar dan teks */
 }
+
 .headera h1 {
     opacity: 0;
     transform: translateY(20px);
