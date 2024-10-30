@@ -1473,13 +1473,13 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     .home {
         flex-direction: column;
         text-align: center;
-        padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
+        
     }
 
     .darkmode .home {
         flex-direction: column;
         text-align: center;
-        padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
+       
     }
 
     .home-content {
