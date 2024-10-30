@@ -15,22 +15,25 @@
     --light-hover-background-color: #F05454;
 
 
-  }
+}
   
   /* ------------ BASE ------------ */
-  *{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-  }
+}
   
-  body{
-
+body{
     background-color: var(--light-color);
-  }
-  
-  /* -------------- BUTTON -------------- */
+}
+
+body.darkmode{
+    background-color: var(--dark-color);
+}
+
+    /* -------------- BUTTON -------------- */
 .btn__indicator {
 
     width: 1.6em;
@@ -42,35 +45,33 @@
     cursor: pointer;
 }
 
-  .btn__icon-container{
+.btn__icon-container{
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .btn__icon {
+.btn__icon {
     color: var(--light-font-color);
     font-size: 2rem; /* Sesuaikan ukuran */
 }
-  /* -------------- ANIMATION ------------ */
-  .btn__icon.animated{
+
+/* -------------- ANIMATION ------------ */
+.btn__icon.animated{
     animation: spin 0.5s;
-  }
+}
 
-  /* -------------- DARKMODE -------------- */
-  body.darkmode{
-    background-color: var(--dark-color);
-  }
+/* -------------- DARKMODE -------------- */
 
-  .darkmode .btn__indicator{
+.darkmode .btn__indicator{
     box-shadow: 0 8px 40px rgba(0,0,0, .3);
-  }
+}
 
-  .darkmode .btn__icon{
+.darkmode .btn__icon{
     color: var(--dark-font);
-  }
+}
 
   /* -------------- Bagian Atas Fix -------------- */
 .header {
@@ -107,7 +108,7 @@
     text-decoration: none;
     font-weight: 600;
     cursor: default;
-    opacity: 0;
+    opacity: 1;
     animation: slideRight 1s ease forwards;
 }
 
@@ -117,7 +118,7 @@
     text-decoration: none;
     font-weight: 600;
     cursor: default;
-    opacity: 0;
+    opacity: 1;
     animation: slideRight 1s ease forwards;
 }
 
@@ -164,6 +165,7 @@
     background-color: rgba(10, 25, 47, 0.9); /* Latar belakang semi-transparan */
     padding: 20px; /* Padding untuk isi navbar */
 }
+
 .darkmode .navbar.active {
     display: flex; /* Tampilkan navbar */
     opacity: 1;
@@ -189,6 +191,7 @@
     font-size: 28px; /* Ukuran ikon */
     color: #fff; /* Warna ikon */
 }
+
   /* -------------- Bagian 1 -------------- */
 
 .home {
@@ -198,6 +201,13 @@
     width: 100%;
     height: 100vh;
     padding: 0 10%;
+    background-color: var(--light-color);
+    margin-bottom: 4rem;
+}
+
+.darkmode .home {
+    background-color: var(--dark-color);
+
 }
 
 .home-content {
@@ -217,7 +227,6 @@
     margin-bottom: 30px;
     opacity: 0; /* Tambahkan opacity untuk animasi */
 }
-
 
 .home-content h2 span {
     color: var(--light-hover-background-color);
@@ -251,6 +260,8 @@
     font-size: 18px;
     color: var(--light-font-color);
     opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
 
 }
 
@@ -281,7 +292,7 @@
     text-decoration: none;
     margin: 30px 15px 30px 0;
     transition: .5s ease;
-    opacity: 0;
+    opacity: 1;
     animation: slideLeft 1s ease forwards;
     animation-delay: calc(.2s * var(--i));
     position: relative; /* Tambahkan ini untuk tooltip */
@@ -307,7 +318,7 @@
     text-decoration: none;
     margin: 30px 15px 30px 0;
     transition: .5s ease;
-    opacity: 0;
+    opacity: 1;
     animation: slideLeft 1s ease forwards;
     animation-delay: calc(.2s * var(--i));
     position: relative; /* Tambahkan ini untuk tooltip */
@@ -317,6 +328,44 @@
     background: var(--dark-font-hover);
     color: var(--dark-font);
     box-shadow: 0 0 20px var(--dark-font-hover);
+}
+
+/* Tooltip styles */
+.home-sci a::after {
+    content: attr(data-tooltip); /* Ambil teks dari atribut data-tooltip */
+    position: absolute;
+    bottom: 50px; /* Jarak dari ikon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--light-hover-background-color); /* Warna latar belakang tooltip */
+    color: var(--light-color); /* Warna teks tooltip */
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap; /* Agar teks tidak terputus */
+    opacity: 1; /* Mulai tidak terlihat */
+    visibility: hidden; /* Sembunyikan tooltip */
+    z-index: 10; /* Pastikan tooltip di atas elemen lain */
+}
+
+.darkmode .home-sci a::after {
+    content: attr(data-tooltip); /* Ambil teks dari atribut data-tooltip */
+    position: absolute;
+    bottom: 50px; /* Jarak dari ikon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--dark-font-hover); /* Warna latar belakang tooltip */
+    color: var(--light-color); /* Warna teks tooltip */
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap; /* Agar teks tidak terputus */
+    opacity: 1; /* Mulai tidak terlihat */
+    visibility: hidden; /* Sembunyikan tooltip */
+    z-index: 10; /* Pastikan tooltip di atas elemen lain */
+}
+
+.home-sci a:hover::after {
+    opacity: 1; /* Tampilkan tooltip saat hover */
+    visibility: visible; /* Ubah visibilitas saat hover */
 }
 
 .home-image, .about-img {
@@ -353,47 +402,7 @@
 
 .home-content p.animate {
     animation: slideLeft 1s ease forwards;
-    animation-delay: 1s;
-}
-
-/* Tooltip styles */
-.home-sci a::after {
-    content: attr(data-tooltip); /* Ambil teks dari atribut data-tooltip */
-    position: absolute;
-    bottom: 50px; /* Jarak dari ikon */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--light-hover-background-color); /* Warna latar belakang tooltip */
-    color: var(--light-color); /* Warna teks tooltip */
-    padding: 5px 10px;
-    border-radius: 5px;
-    white-space: nowrap; /* Agar teks tidak terputus */
-    opacity: 0; /* Mulai tidak terlihat */
-    visibility: hidden; /* Sembunyikan tooltip */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transisi halus */
-    z-index: 10; /* Pastikan tooltip di atas elemen lain */
-}
-
-.darkmode .home-sci a::after {
-    content: attr(data-tooltip); /* Ambil teks dari atribut data-tooltip */
-    position: absolute;
-    bottom: 50px; /* Jarak dari ikon */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--dark-font-hover); /* Warna latar belakang tooltip */
-    color: var(--light-color); /* Warna teks tooltip */
-    padding: 5px 10px;
-    border-radius: 5px;
-    white-space: nowrap; /* Agar teks tidak terputus */
-    opacity: 0; /* Mulai tidak terlihat */
-    visibility: hidden; /* Sembunyikan tooltip */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transisi halus */
-    z-index: 10; /* Pastikan tooltip di atas elemen lain */
-}
-
-.home-sci a:hover::after {
-    opacity: 1; /* Tampilkan tooltip saat hover */
-    visibility: visible; /* Ubah visibilitas saat hover */
+    animation-delay: 2s;
 }
 
 .tombol {
@@ -409,9 +418,9 @@
     border-radius: 40px;
     cursor: pointer;
     transition: 0.3s;
-    opacity: 0;
+    opacity: 1;
     animation: slideTop 1s ease forwards;
-    animation-delay: 2s;
+    animation-delay: 1s;
     box-shadow: 0 0 5px var(--light-hover-color), 0 0 25px var(--light-hover-color);
 }
 
@@ -433,7 +442,7 @@
     border-radius: 40px;
     cursor: pointer;
     transition: 0.3s;
-    opacity: 0;
+    opacity: 1;
     animation: slideTop 1s ease forwards;
     animation-delay: 2s;
     box-shadow: 0 0 5px var(--dark-hover), 0 0 25px var(--light-hover-color);
@@ -444,22 +453,24 @@
     box-shadow: 0 0 5px var(--dark-color), 0 0 10px var(--dark-color), 0 0 15px var(--dark-color), 0 0 20px var(--dark-font), 0 0 50px var(--dark-color);
 }
 
+
   /* -------------- Bagian 2 -------------- */
-  .about {
+.about {
+    margin-bottom: 4rem;/* Margin bawah seragam */
+    width: 100%;
+    height: 100vh;
+    background-color: var(--light-color); /* Latar belakang seragam */
+    padding: 50px; /* Padding seragam */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 1.5rem;
-    padding: 50px; /* Menambahkan padding untuk ruang */
-    background-color: var(--light-color); /* Background untuk kontras */
+    text-align: center; /* Menyamakan perataan teks */
+    font-weight: bold; /* Menambahkan font-weight seragam */
+    line-height: 1.4; /* Menambahkan jarak antar baris seragam */
 }
 
-  .darkmode .about {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    gap: 1.5rem;
-    padding: 50px; /* Menambahkan padding untuk ruang */
+.darkmode .about {
     background-color: var(--dark-color); /* Background untuk kontras */
 }
 
@@ -488,8 +499,6 @@
     font-size: 40px;
     margin-top: 50px;
     color: var(--light-font-color); /* Pastikan teks terlihat di background gelap */
-    animation: slideBottom 1s ease forwards;
-    animation-delay: .7s;
 }
 
 .darkmode .about-text h2 {
@@ -506,8 +515,6 @@
     color: var(--light-hover-background-color); /* Warna untuk membuatnya menonjol */
     line-height: 1.7;
     margin: 10px 0 10px;
-    animation: slideRight 1s ease forwards;
-    animation-delay: 1s;
 }
 
 .darkmode .about-text h4 {
@@ -544,7 +551,7 @@
 .about-text p {
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.7s ease;
+    transition: all 1s ease;
 }
 
 /* Class untuk animasi ketika scroll */
@@ -553,13 +560,14 @@
 }
 
 .about-text h2.animate {
-    animation: slideRight 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
-    animation-delay: .4s;
+    opacity: 1;
+    animation: slideRight 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    animation-delay: .1s;
 }
 
 .about-text h4.animate {
-    animation: slideLeft 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
-    animation-delay: .2s;
+    animation: slideLeft 2s ease forwards; /* Ganti dengan animasi yang diinginkan */
+    animation-delay: .1s;
 }
 
 .about-text p.animate {
@@ -577,31 +585,207 @@ html {
     scroll-behavior: smooth;
 }
 
-  /* -------------- Bagian 3 -------------- */
 
-#services {
+ /* Bagian Some of Work Experience */
+ .headera {
+    background-color: var(--light-color);
+    margin-bottom: 4rem; /* Margin bawah seragam */
+    width: 100%;
+    height: 100vh;
+    padding: 50px; /* Padding seragam */
+    text-align: center; /* Menyamakan perataan teks */
+    font-weight: bold; /* Menambahkan font-weight seragam */
+    align-items: center;
+    gap: 1.5rem;
+    line-height: 1.4;
+
+}
+
+.darkmode .headera {
+    background-color: var(--dark-color);
+}
+
+.headera h1 {
+    font-size: 40px; /* Ukuran teks judul */
+    margin: 50px 0; /* Margin atas dan bawah untuk judul */
+    text-align: center; /* Memposisikan judul di tengah */
+    color: var(--light-font-color); /* Warna font variabel untuk mode terang */
+    opacity: 0; /* Dimulai dengan opacity 0 untuk animasi masuk */
+    transform: translateY(20px); /* Posisi awal sedikit di bawah */
+    transition: all 0.7s ease; /* Durasi dan jenis transisi */
+}
+
+.headera h1.animate{
+    animation: slideRight 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
+    animation-delay: .4s;
+}
+
+.darkmode .headera h1 {
+color: var(--dark-font); /* Mengubah warna teks di mode gelap */
+}
+
+.headera span {
+    color: var(--light-hover-color); /* Warna untuk teks span dalam judul */
+    padding: 0 5px; /* Padding horizontal untuk spasi antar teks */
+}
+
+.darkmode .headera span {
+    color: var(--dark-hover); /* Warna teks di mode gelap */
+}
+
+/* Styling dasar untuk timeline */
+.timeline {
+    position: relative;
+    max-width: 1200px; /* Lebar maksimum untuk elemen timeline */
+    margin: 0 auto; /* Pusatkan timeline */
+}
+
+.timeline::after {
+    content: ''; /* Elemen pseudo untuk garis timeline */
+    position: absolute;
+    width: 2px; /* Ketebalan garis */
+    background-color: var(--light-font-color); /* Warna garis */
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Posisi garis di tengah */
+    transform: translateX(-50%); /* Menyelaraskan garis secara horizontal */
+}
+
+.darkmode .timeline::after {
+    background-color: var(--dark-font); /* Warna garis di mode gelap */
+}
+
+/* Styling untuk item timeline */
+.timeline-item {
+    padding: 10px 40px; /* Padding dalam item */
+    position: relative;
+    width: 50%; /* Setiap item menempati setengah lebar */
+    opacity: 0;
+    visibility: hidden; /* Mulai dalam keadaan tidak terlihat */
+    transition: opacity 0.5s ease, visibility 0s 0.5s; /* Transisi yang mulus */
+}
+
+.timeline-item.animate {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1.5s ease; /* Animasi untuk elemen yang terlihat */
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0; /* Item ganjil di sisi kiri */
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%; /* Item genap di sisi kanan */
+}
+/* Styling untuk konten item dengan animasi */
+.timeline-content {
+    padding: 20px 30px; /* Padding dalam konten item */
+    background-color: var(--light-hover-color); /* Background di mode terang */
+    border-radius: 15px; /* Membulatkan sudut konten */
+    position: relative;
+    color: #fff; /* Warna teks */
+    text-align: center; /* Menyelaraskan teks di tengah */
+    
+}
+
+.darkmode .timeline-content {
+    background-color: var(--dark-card); /* Background di mode gelap */
+}
+
+/* Animasi untuk item timeline */
+.timeline-item:nth-child(odd) .timeline-content {
+    animation: slideRight 1s ease forwards; /* Animasi untuk item di kiri */
+
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    animation: slideLeft 1s ease forwards; /* Animasi untuk item di kanan */
+
+}
+
+/* Class to trigger animations */
+
+.timeline-content img {
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    background-color: var(--light-font-color);
+    border-radius: 50%;
+    position: absolute;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    z-index: 1;
+}
+
+.darkmode .timeline-dot {
+    background-color: var(--dark-font);
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: 0%;
+}
+
+/* Text styles */
+.timeline-content .role {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.timeline-content .company {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: var(--light-hover-background-color);
+}
+
+.darkmode .timeline-content .company {
+    color: var(--dark-font-hover);
+}
+
+.timeline-content .date {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+ /* -------------- Bagian 3 -------------- */
+
+ #services {
     color: aliceblue;
     line-height: 1.4;
     margin-bottom: 4rem;
+    width: 100%;
+    height: 100vh;
     background-color: var(--light-color); /* Latar belakang untuk mode terang */
+    text-align: center; /* Menyamakan perataan teks */
+    font-weight: bold; /* Menambahkan font-weight seragam */
+    align-items: center;
+    gap: 1.5rem;
+    padding: 50px; /* Padding seragam */
 }
 
 .darkmode #services {
     background-color: var(--dark-color); /* Latar belakang untuk mode gelap */
 }
 
-.sub-title {
+.container h1 {
     text-align: center;
     font-size: 40px;
-    padding-bottom: 70px;
+    color: var(--light-font-color);
+    margin-top: -20px;
 }
 
-.sub-title span {
-    color: var(--light-hover-background-color);
-}
+.darkmode .container h1 {
 
-.darkmode .sub-title span {
-    color: var(--dark-font-hover);
+    color: var(--dark-font);
 }
 
 .container {
@@ -623,13 +807,17 @@ html {
     border-radius: 20px;
     background-color: var(--light-hover-color);
     transition: background 0.5s, transform 0.5s;
-    box-shadow: 1px 1px 20px var(--light-hover-color), 1px 1px 40px var(--light-hover-color);
+    box-shadow: 1px 1px 20px var(--light-font-color), 1px 1px 40px var(--light-color);
 }
 
 .darkmode .services-list div {
+    padding: 20px;
+    font-size: 13px;
+    font-weight: 13px;
+    border-radius: 20px;
     background-color: var(--dark-card);
     transition: background 0.5s, transform 0.5s;
-    box-shadow: 1px 1px 20px var(--dark-color), 1px 1px 40px var(--dark-color);
+    box-shadow: 2px 2px 10px var(--dark-font), 2px 2px 30px var(--dark-color);
 }
 
 .services-list div:hover {
@@ -640,7 +828,8 @@ html {
 
 .darkmode .services-list div:hover {
     background-color: var(--dark-card); /* Efek hover yang ringan */
-
+    transform: translateY(-10px); /* Sedikit mengangkat saat hover */
+    cursor: pointer;
 }
 
 .services-list div p {
@@ -676,23 +865,56 @@ html {
     animation: fadeInRotate 2s ease forwards;
 }
 
-
-  /* -------------- Bagian 4 -------------- */
+/* -------------- Bagian 4 -------------- */
 
 #skills {
     color: aliceblue;
+    line-height: 1.4;
     margin-bottom: 4rem;
+    width: 100%;
+    height: 100%;
+    background-color: var(--light-color); /* Latar belakang untuk mode terang */
+    text-align: center; /* Menyamakan perataan teks */
+    font-weight: bold; /* Menambahkan font-weight seragam */
+    align-items: center;
+    gap: 1.5rem;
+    padding: 50px; /* Padding seragam */
+}
+
+.darkmode #skills {
+    background-color: var(--dark-color);
+}
+
+.sub-title {
     text-align: center;
+    font-size: 40px;
+    padding-bottom: 70px;
+}
+
+.sub-title span {
+    color: var(--light-hover-background-color);
+}
+
+.darkmode .sub-title span {
+    color: var(--dark-font-hover);
 }
 
 .skills-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Kolom otomatis */
-    gap: 50px;
+    gap: 40px;
+    padding: 50px;
+}
+
+.darkmode .skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Kolom otomatis */
+    gap: 40px;
     padding: 50px;
 }
 
 .skill-box {
+    opacity: 0;
     padding: 20px;
     border-radius: 20px;
     text-align: center;
@@ -704,57 +926,84 @@ html {
 
 .darkmode .skill-box {
     background-color: var(--dark-card);
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5), 0px 8px 40px rgba(0, 0, 0, 0.5);
-}
-
-.skill-box:hover {
-    transform: translateY(-10px); /* Small lift effect */
     box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5), 0px 12px 45px rgba(0, 0, 0, 0.3); /* Shadow intensifies */
 }
 
-.skill-box i {
-    font-size: 50px; /* Icon size */
-    color: #e0e4ef; /* Icon color */
-    margin-bottom: 10px;
+.skill-box:hover {
+    transform: translateY(-5px); /* Small lift effect */
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5), 0px 12px 45px rgba(0, 0, 0, 0.3); /* Shadow intensifies */
+}
+
+.darkmode .skill-box:hover {
+    transform: translateY(-5px); /* Small lift effect */
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5), 0px 12px 45px rgba(0, 0, 0, 0.3); /* Shadow intensifies */
 }
 
 .skill-box h2 {
-    font-size: 18px;
-    font-weight: bold;
-    color: aliceblue;
+    font-size: 18px; /* Icon size */
+}
+
+.darkmode .skill-box h2 {
+    font-size: 18px; /* Icon size */
+}
+
+.skills-list .skill-box i {
+    font-size: 35px; /* Icon size */
+    color: #e0e4ef; /* Icon color */
+    margin-bottom: 5px;
     margin-top: 10px;
 }
-/* Default untuk skill-box */
-.skill-box {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.7s ease;
-}
 
-/* Ketika skill-box terlihat di layar */
-.skill-box.animate {
-    animation: fadeInScale 1s ease forwards;
+.darkmode .skills-list .skill-box i {
+    font-size: 35px; /* Icon size */
+    color: #e0e4ef; /* Icon color */
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
+/* Ketika skill-box terlihat di layar */
 
 .container1 h1 {
-    opacity: 0;
-    transform: translateX(-20px); /* Posisi awal dari kiri */
-    transition: all 0.7s ease;
+    text-align: center;
+    color: var(--light-font-color);
     font-size: 40px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    opacity: 0;
 }
 
-/* Ketika h1 terlihat di layar */
+.darkmode .container1 h1 {
+    color: var(--dark-font);
+
+}
+
 .container1 h1.animate {
     animation: slideRight 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
     animation-delay: .4s;
 }
 
+.skill-box.animate {
+    animation: fadeInScale 1s ease forwards;
+}
 
 
 
   /* -------------- Bagian 5 PROJECT -------------- */
 
 /* Struktur grid untuk tampilan default */
+
+.project {
+    width: 100%;
+    padding: 50px 0;
+    margin-bottom: 4rem;
+    background-color: var(--light-color); /* Sesuaikan dengan tema */
+}
+
+.darkmode .project {
+    width: 100%;
+    padding: 50px 0;
+    background-color: var(--dark-color); /* Sesuaikan dengan tema */
+}
+
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -763,10 +1012,6 @@ html {
     margin: 0 auto;
     padding: 1rem;
     
-}
-
-.project h1{
-    font-size: 40px;
 }
 
 /* Card */
@@ -785,9 +1030,6 @@ html {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5), 0px 8px 40px rgba(0, 0, 0, 0.5);
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-}
 
 .project-image {
     position: relative;
@@ -865,10 +1107,11 @@ html {
     font-weight: bold;
     margin-top: 2em;
     font-size: 40px;
+    text-align: center;
 }
 
 .darkmode .sub-title{
-    color: var(--dark-font);
+    color: var(--light-color);
     font-weight: bold;
 }
 
@@ -945,58 +1188,7 @@ html {
 
 .project-card.animate {
     animation: fadeInFromBottom 1s ease forwards;
-    transition-delay: 0.2s; /* Menambah sedikit jeda untuk efek */
-}
-
-.layer{
-    width: 100%;
-    height: 0;
-    background: linear-gradient(rgba( 0,0,0,0.1),#1a1517);
-    position: absolute;
-    border-radius: 8px;
-    left: 0;
-    bottom: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 40px;
-    transition: height 0.5s;
-    
-
-} 
-
-.layer a {
-    text-decoration: none; /* Menghilangkan garis bawah */
-}
-
-.layer h5{
-    color: #000;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 15px;
-
-}
-
-.layer p{
-    color: #000;
-    font-size: 1rem;
-    line-height: 1.8;
-
-}
-
-.layer i {
-    color: #fff; /* Warna ikon */
-    margin-top: 20px;
-    font-size: 40px; /* Ukuran ikon lebih besar */
-    width: 70px; /* Sesuaikan lebar ikon */
-    height: 70px; /* Sesuaikan tinggi ikon */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%; 
+    transition-delay: 1s; /* Menambah sedikit jeda untuk efek */
 }
 
 .project-image:hover img{
@@ -1022,7 +1214,7 @@ html {
 
   /* -------------- Bagian 6 -------------- */
 
-.contact{
+  .contact{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
@@ -1030,9 +1222,21 @@ html {
     padding-left: 30px;
     padding-top: 100px;
     margin-top: 130px;
+    background-color: var(--light-color);
+}
+ .darkmode .contact{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 3rem;
+    padding-left: 30px;
+    padding-top: 100px;
+    margin-top: 130px;
+    background-color: var(--dark-color);
 }
 
 .contact-text h2{
+    opacity: 0;
     font-size: 40px;
     line-height: 1;
     text-align: center;
@@ -1160,30 +1364,10 @@ html {
     color: var(--dark-font);
 }
 
-@keyframes fadeInFromLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeInFromRight {
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 
 .contact-text h2.animate {
-    animation: fadeInDown 1s ease forwards;
+    opacity: 1;
+    animation: slideRight 1s ease forwards;
 }
 
 .contact-text h4.animate {
@@ -1195,7 +1379,6 @@ html {
     animation: fadeInFromRight 1s ease forwards;
     transition-delay: 0.4s; /* Delay lebih lama untuk p */
 }
-
 
 .top {
     position: fixed;
@@ -1216,6 +1399,602 @@ html {
 .darkmode .top i {
     color: var(--dark-color);
     background: var(--dark-font);
+}
+
+/* Mode Mobile */
+@media (max-width: 768px) {
+    /* Header */
+    .navbar {
+        display: none; /* Navbar is hidden by default */
+    
+    }
+    
+    .darkmode .navbar {
+        display: none; /* Navbar is hidden by default */
+        background-color: rgba(30, 30, 30, 0.9); /* Contoh warna gelap dengan transparansi */
+    }
+    
+    .navbar.active {
+        display: flex; /* Navbar ditampilkan saat aktif */
+        flex-direction: column; /* Susunan item vertikal */
+        align-items: center; /* Rata tengah */
+        gap: 20px; /* Ruang antar item */
+        left: 0; /* Ratakan ke kiri */
+        right: 0; /* Ratakan ke kanan */
+        padding: 15px; /* Padding navbar */
+        z-index: 10; /* Di atas elemen lain */
+    }
+    
+    .darkmode .navbar.active {
+        display: flex; /* Show navbar when active */
+        flex-direction: column; /* Arrange items vertically */
+        align-items: center; /* Center align items */
+        gap: 20px; /* Space between items */
+        -webkit-backdrop-filter: blur(10px); /* Safari for iOS */
+        backdrop-filter: blur(10px); /* Non-Safari browsers */
+        background-color: rgba(255, 255, 255, 0.8); /* Background with transparency */
+        left: 0; /* Align to the left */
+        right: 0; /* Align to the right */
+        padding: 15px; /* Padding for the navbar */
+        z-index: 10; /* To be above other elements */
+    }
+    
+    .navbar a {
+        margin-bottom: 8px;
+        padding: 8px;
+        width: 100%;
+        color: var(--light-color); /* Warna teks putih untuk kontras */
+    }
+    
+    .darkmode .navbar a {
+        margin-bottom: 8px;
+        padding: 8px;
+        width: 100%;
+        color: var(--dark-color); /* Warna teks putih untuk kontras */
+    }
+    
+    /* Pastikan .hamburger terlihat di dark mode */
+    .hamburger,
+    .darkmode .hamburger {
+        display: block; /* Tampilkan di mobile */
+        position: absolute; /* Sesuaikan agar tidak bergeser */
+        right: 5%; /* Sesuaikan posisi sesuai layout */
+        z-index: 101; /* Di atas elemen lainnya */
+    }
+    
+    .btn {
+        position: absolute; /* Tetapkan posisi agar tidak mempengaruhi elemen lain */
+        right: 40%; /* Sesuaikan sesuai kebutuhan */
+        z-index: 101; /* Agar tidak tertimpa elemen lain */
+    }
+
+    /* Bagian 1 */
+    
+    .home {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
+    }
+
+    .darkmode .home {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
+    }
+
+    .home-content {
+        max-width: 100%;
+        margin-top: 150px; /* Sesuaikan margin atas */
+    }
+
+    .home-content h3 {
+        font-size: 20px; /* Ukuran font lebih kecil */
+    }
+
+    .home-content h1 {
+        font-size: 28px; /* Ukuran font lebih kecil */
+        margin: 15px 0; /* Tambahkan margin untuk jarak antar teks */
+    }
+
+    .darkmode .home-content h1 {
+        font-size: 28px; /* Ukuran font lebih kecil */
+    }
+
+    .home-content p {
+        font-size: 16px; /* Ukuran font lebih kecil */
+        padding: 0 10px; /* Tambahkan padding untuk kenyamanan baca */
+    }
+
+    .home-image img {
+        width: 200px; /* Ukuran gambar lebih kecil */
+        height: 200px;
+        display: none; /* Tampilkan gambar */
+    }
+
+    .home-content h2 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        opacity: 1; /* Tambahkan opacity untuk animasi */
+    }
+
+    /* Bagian About */
+
+    .about {
+        height: auto;
+        grid-template-columns: 1fr; /* Mengubah layout menjadi satu kolom */
+        text-align: center;
+        padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
+    }
+    
+    .darkmode .about {
+        grid-template-columns: 1fr; /* Mengubah layout menjadi satu kolom */
+        text-align: center;
+        padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
+    }
+    
+    .about-img {
+        margin-top: 55px;
+    /* Kurangi margin bawah *//* Pastikan z-index yang benar */
+        align-items: center;
+    }
+    
+    .darkmode .about-img {
+        margin-top: 55px;
+    /* Kurangi margin bawah *//* Pastikan z-index yang benar */
+        align-items: center;
+    }
+    
+    .about-img img {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%; /* Menjaga gambar berbentuk lingkaran */
+        object-fit: cover; /* Agar gambar tetap proporsional */
+        margin: 0 auto; /* Mengatur gambar ke tengah */
+    }
+    
+    .darkmode .about-img img {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%; /* Menjaga gambar berbentuk lingkaran */
+        object-fit: cover; /* Agar gambar tetap proporsional */
+        margin: 0 auto; /* Mengatur gambar ke tengah */
+    }
+    
+    .about-text {
+        padding: 15px; /* Memberi jarak di sekitar teks */
+    }
+    
+    .darkmode .about-text {
+        padding: 15px; /* Memberi jarak di sekitar teks */
+    }
+
+    .about-text p {
+        font-size: 16px; /* Ukuran font lebih kecil */
+    }
+
+    .darkmode .about-text p {
+        font-size: 16px; /* Ukuran font lebih kecil */
+    }
+    
+    /* Bagian Experience */
+    .headera {
+        height: auto;
+    }
+
+    .headera h1 {
+        font-size: 32px; /* Ukuran font yang lebih kecil untuk judul */
+        margin: 30px 0; /* Mengurangi margin untuk judul */
+    }
+
+    .timeline-item {
+        width: 90%; /* Item timeline mengisi 100% lebar layar */
+        padding: 10px 20px; /* Padding yang lebih kecil untuk item */
+        
+    }
+
+    .timeline-content {
+        padding: 15px; /* Mengurangi padding dalam konten item */
+    }
+
+    .timeline-content .role {
+        font-size: 1.1rem; /* Ukuran font yang lebih kecil untuk role */
+    }
+
+    .timeline-content .company {
+        font-size: 0.9rem; /* Ukuran font yang lebih kecil untuk company */
+    }
+
+    .timeline-content .date {
+        font-size: 0.8rem; /* Ukuran font yang lebih kecil untuk tanggal */
+    }
+
+    .timeline-dot {
+        left: 111%; 
+        width: 15px; /* Lebar dot lebih kecil */
+        height: 15px; /* Tinggi dot lebih kecil */
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 111%;
+    }
+
+    .logos {
+        width: 40px; /* Ukuran logo lebih kecil di mobile */
+        height: 40px; /* Tinggi logo lebih kecil di mobile */
+    }
+
+        /* Penyesuaian gambar di mobile */
+    .timeline-content img {
+            max-width: 80px; /* Lebar maksimum gambar lebih kecil */
+    }
+    
+    .timeline::after {
+            content: ''; /* Elemen pseudo untuk garis timeline */
+            position: absolute;
+            width: 2px; /* Ketebalan garis */
+            background-color: var(--light-font-color); /* Warna garis */
+            top: 0;
+            bottom: 0;
+    
+            left: 100%; /* Posisi garis di tengah */
+            transform: translateX(-50%); /* Menyelaraskan garis secara horizontal */
+    }
+    
+        .timeline-item:nth-child(odd) {
+            left: 0; /* Item ganjil di sisi kiri */
+    }
+        
+        .timeline-item:nth-child(even) {
+            left: 0%; /* Item genap di sisi kanan */
+        }
+
+        /* Baagian Areas of interest */
+
+        #services {
+            width: 100%;
+            height: auto;
+            font-size: 18px; /* Ukuran font yang lebih kecil */
+            margin-bottom: 2rem; /* Kurangi margin bawah */
+        }
+    
+        .darkmode #services {
+            font-size: 18px; /* Ukuran font yang lebih kecil */
+            margin-bottom: 2rem; /* Kurangi margin bawah */
+        }
+        
+        .container {
+            padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
+        }
+    
+        .darkmode .container {
+            padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
+        }
+        
+        .container h1 {
+            font-size: 34px; /* Kurangi ukuran font judul */
+        }
+    
+        .darkmode .container h1 {
+            font-size: 34px; /* Kurangi ukuran font judul */
+        }
+        
+        .services-list {
+            grid-template-columns: 1fr; /* Tampilan satu kolom di layar kecil */
+            gap: 3rem; /* Kurangi jarak antar kotak */
+            padding-left: 0;
+            padding-right: 0;
+        }
+    
+        .darkmode .services-list {
+            grid-template-columns: 1fr; /* Tampilan satu kolom di layar kecil */
+            gap: 3rem; /* Kurangi jarak antar kotak */
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        .services-list div {
+            padding: 15px; /* Kurangi padding pada kotak layanan */
+            font-size: 14px; /* Sesuaikan ukuran font */
+        }
+        
+        .darkmode .services-list div {
+            padding: 15px; /* Kurangi padding pada kotak layanan */
+            font-size: 14px; /* Sesuaikan ukuran font */
+        }
+        
+        .services-list div i {
+            font-size: 40px; /* Kurangi ukuran ikon */
+            margin-bottom: 20px;
+        }
+    
+        .darkmode .services-list div i {
+            font-size: 40px; /* Kurangi ukuran ikon */
+            margin-bottom: 20px;
+        }
+        
+        .services-list div h2 {
+            font-size: 20px; /* Kurangi ukuran font judul layanan */
+            margin-bottom: 10px;
+        }
+    
+        .darkmode .services-list div h2 {
+            font-size: 20px; /* Kurangi ukuran font judul layanan */
+            margin-bottom: 10px;
+        }
+
+
+/* BAGIAN SKIILLS */
+#skills{
+    height: auto;
+}
+
+.skills-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom pada mobile */
+    gap: 20px; /* Mengurangi jarak antar box */
+    padding: 0 10px; /* Menghilangkan padding kiri-kanan agar sesuai layar */
+}
+
+.darkmode .skills-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom pada mobile */
+    gap: 20px; /* Mengurangi jarak antar box */
+    padding: 0 10px; /* Menghilangkan padding kiri-kanan agar sesuai layar */
+}
+
+.skill-box {
+    padding: 5px; /* Mengurangi padding di dalam skill-box */
+}
+
+.darkmode .skill-box {
+    padding: 5px; /* Mengurangi padding di dalam skill-box */
+}
+
+.skill-box i {
+    font-size: 40px; /* Mengurangi ukuran ikon pada mobile */
+}
+
+.darkmode .skill-box i {
+    font-size: 40px; /* Mengurangi ukuran ikon pada mobile */
+}
+
+.skill-box h2 {
+    font-size: 15px; /* Mengurangi ukuran teks pada mobile */
+}
+
+.darkmode .skill-box h2 {
+    font-size: 15px; /* Mengurangi ukuran teks pada mobile */
+}
+
+.container1 h1{
+    font-size: 40px;
+
+}
+
+.darkmode .container1 h1{
+    font-size: 40px;
+}
+
+
+     
+    /* Bagian About */
+
+    .portfolio-grid {
+        grid-template-columns: repeat(1, 1fr); /* Tampilkan dua kolom pada layar kecil */
+        gap: 3rem; /* Kurangi jarak antar-kartu */
+    }
+    
+    .project-card {
+        padding: 0.8rem; /* Kurangi padding pada kartu di mode mobile */
+    }
+    
+    .project-info {
+        padding: 1rem 0.8rem; /* Kurangi padding vertikal dan horizontal */
+    }
+    
+    .project-title h3 {
+        font-size: 1rem; /* Ukuran font lebih kecil untuk judul */
+    }
+    
+    .project-description {
+        font-size: 0.8rem; /* Ukuran font lebih kecil untuk deskripsi */
+        margin-bottom: 0.5rem; /* Kurangi jarak bawah */
+    }
+    
+    .tech-stack {
+        font-size: 0.8rem; /* Ukuran font lebih kecil untuk tech stack */
+    }
+    
+    .project-links {
+        padding-top: 0.5rem; /* Kurangi padding atas */
+    }
+    
+    .darkmode .project-card {
+        padding: 0.8rem; /* Kurangi padding pada kartu di mode mobile */
+    }
+    
+    .darkmode .project-info {
+        padding: 1rem 0.8rem; /* Kurangi padding vertikal dan horizontal */
+    }
+    
+    .darkmode .project-title h3 {
+        font-size: 1rem; /* Ukuran font lebih kecil untuk judul */
+    }
+    
+    .darkmode .project-description {
+        font-size: 0.8rem; /* Ukuran font lebih kecil untuk deskripsi */
+        margin-bottom: 0.5rem; /* Kurangi jarak bawah */
+    }
+    
+    .darkmode .tech-stack {
+        font-size: 0.8rem; /* Ukuran font lebih kecil untuk tech stack */
+    }
+
+
+.contact {
+        grid-template-columns: 1fr; /* One column for mobile */
+        padding-left: 10px; /* Smaller padding */
+        padding-top: 40px; /* Smaller padding */
+        margin-top: 40px; /* Smaller margin */
+}
+.darkmode .contact {
+        grid-template-columns: 1fr; /* One column for mobile */
+        padding-left: 10px; /* Smaller padding */
+        padding-top: 40px; /* Smaller padding */
+        margin-top: 40px; /* Smaller margin */
+}
+
+.contact-text,
+.contact-form {
+        padding-left: 15px; /* Add padding to the left for better spacing */
+        padding-right: 15px; /* Optional: Add padding to the right */
+}
+
+.contact-text h2 {
+        font-size: 40px; /* Smaller font size */
+}
+
+.contact-text h4,
+.contact-text p {
+        font-size: 14px; /* Smaller font size */
+}
+
+.contact-list li {
+        font-size: 14px; /* Smaller font size for contact list */
+        color: var(--dark-color);
+}
+
+.darkmode .contact-list li {
+        font-size: 14px; /* Smaller font size for contact list */
+        color: var(--dark-font);
+}
+
+.contact-form .send {
+        padding: 8px 20px; /* Smaller button padding */
+        font-size: 12px; /* Smaller font size for button */
+}
+
+
+/* Desktop styles for contact section text */
+.contact-text {
+    padding-left: 15px; /* Add padding to the left for desktop */
+    padding-right: 15px; /* Optional: Add padding to the right */
+}
+
+.darkmode .contact-text {
+    padding-left: 15px; /* Add padding to the left for desktop */
+    padding-right: 15px; /* Optional: Add padding to the right */
+}
+
+.contact-text h2 {
+    font-size: 40px; /* Larger font size */
+    line-height: 1;
+    text-align: center;
+}
+
+.darkmode .contact-text h2 {
+    font-size: 40px; /* Larger font size */
+    line-height: 1;
+    text-align: center;
+}
+
+.contact-text h2 span {
+    color: var(--light-hover-background-color);
+}
+
+.contact-text h4 {
+    margin: 15px 0;
+    color: var(--light-hover-color);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.darkmode .contact-text h4 {
+    margin: 15px 0;
+    color: var(--light-hover-color);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.contact-text p {
+    color: var(--dark-card);
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 2rem;
+}
+
+.darkmode .contact-text p {
+    color: var(--dark-card);
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 2rem;
+}
+
+.contact-list {
+    margin-bottom: 3rem;
+}
+
+.contact-list li {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.contact-list i {
+    display: inline-block;
+    color: var(--light-hover-background-color);
+    font-size: 20px;
+    font-weight: 600;
+    transition: all .40s ease;
+}
+
+.contact-list li a:hover {
+    transform: scale(1.01) translateY(-5px);
+    color: var(--light-hover-background-color);
+}
+
+/* Contact form styles */
+.contact-form {
+    padding: 20px; /* Padding inside form for spacing */
+    margin: 0 auto; /* Centering the form */
+    max-width: 600px; /* Maximum width */
+}
+
+/* Adjustments for inputs and textarea */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%; /* Full width */
+    padding: 10px;
+    margin-bottom: 20px; /* Space between fields */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Button styling */
+.contact-form .send {
+    width: 100%;
+    padding: 10px;
+    background-color: #7E2553;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+}
+
+
+
+@media (max-width: 480px) {
+    .skills-list {
+        grid-template-columns: 1fr; /* 2 kolom pada mobile */
+        gap: 20px; /* Mengurangi jarak antar box */
+        padding: 0 10px; /* Menghilangkan padding kiri-kanan agar sesuai layar */
+    }
+    .darkmode .skills-list {
+        grid-template-columns: 1fr; /* 2 kolom pada mobile */
+        gap: 20px; /* Mengurangi jarak antar box */
+        padding: 0 10px; /* Menghilangkan padding kiri-kanan agar sesuai layar */
+    }
 }
 
 /* Keyframes untuk animasi fadeInFromBottom */
@@ -1274,6 +2053,28 @@ html {
         transform: translateX(-20px);
     }
     100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
         opacity: 1;
         transform: translateX(0);
     }
@@ -1434,720 +2235,4 @@ html {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* Media query untuk responsif */
-/* CSS untuk tampilan mobile */
-@media (max-width: 768px) {
-/* CSS untuk navbar */
-.navbar {
-    display: none; /* Navbar is hidden by default */
-    -webkit-backdrop-filter: blur(10px); /* Safari untuk iOS */
-    backdrop-filter: blur(10px); /* Non-Safari browsers */
-    background-color: transparent; /* Default background is transparent */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-}
-
-.darkmode .navbar {
-    display: none; /* Navbar is hidden by default */
-    background-color: rgba(30, 30, 30, 0.9); /* Contoh warna gelap dengan transparansi */
-}
-
-.navbar.active {
-    display: flex; /* Show navbar when active */
-    flex-direction: column; /* Arrange items vertically */
-    align-items: center; /* Center align items */
-    gap: 20px; /* Space between items */
-    -webkit-backdrop-filter: blur(10px); /* Safari for iOS */
-    backdrop-filter: blur(10px); /* Non-Safari browsers */
-    background-color: rgba(30, 30, 30, 0.9); /* Contoh latar belakang gelap */
-    left: 0; /* Align to the left */
-    right: 0; /* Align to the right */
-    padding: 15px; /* Padding for the navbar */
-    z-index: 10; /* To be above other elements */
-}
-
-.darkmode .navbar.active {
-    display: flex; /* Show navbar when active */
-    flex-direction: column; /* Arrange items vertically */
-    align-items: center; /* Center align items */
-    gap: 20px; /* Space between items */
-    -webkit-backdrop-filter: blur(10px); /* Safari for iOS */
-    backdrop-filter: blur(10px); /* Non-Safari browsers */
-    background-color: rgba(255, 255, 255, 0.8); /* Background with transparency */
-    left: 0; /* Align to the left */
-    right: 0; /* Align to the right */
-    padding: 15px; /* Padding for the navbar */
-    z-index: 10; /* To be above other elements */
-}
-
-.navbar a {
-    margin-bottom: 8px;
-    padding: 8px;
-    width: 100%;
-    color: var(--light-color); /* Warna teks putih untuk kontras */
-}
-
-.darkmode .navbar a {
-    margin-bottom: 8px;
-    padding: 8px;
-    width: 100%;
-    color: var(--dark-color); /* Warna teks putih untuk kontras */
-}
-
-/* Pastikan .hamburger terlihat di dark mode */
-.hamburger,
-.darkmode .hamburger {
-    display: block; /* Tampilkan di mobile */
-    position: absolute; /* Sesuaikan agar tidak bergeser */
-    right: 5%; /* Sesuaikan posisi sesuai layout */
-    z-index: 101; /* Di atas elemen lainnya */
-}
-
-.btn {
-    position: absolute; /* Tetapkan posisi agar tidak mempengaruhi elemen lain */
-    right: 40%; /* Sesuaikan sesuai kebutuhan */
-    z-index: 101; /* Agar tidak tertimpa elemen lain */
-}
-
-
-/* Bagian 1 */
-
-.home {
-    flex-direction: column;
-    text-align: center;
-    padding: 50px; /* Tambahkan padding untuk memberikan ruang */
-}
-
-.home-content {
-    max-width: 100%;
-    margin-top: 100px; /* Menyesuaikan margin atas di tampilan mobile */
-}
-
-.home-content h3 {
-    font-size: 24px; /* Ukuran font lebih kecil */
-}
-
-.home-content h1 {
-    font-size: 32px; /* Ukuran font lebih kecil */
-}
-
-.darkmode .home-content h1 {
-    font-size: 32px; /* Ukuran font lebih kecil */
-}
-
-.home-image {
-    position: relative; /* Pastikan gambar tidak tertindih */
-    z-index: 0;
-}
-
-.home-image img {
-    display: none; /* Sembunyikan gambar di tampilan mobile */
-}
-
-/* Menyesuaikan elemen blur di background agar tidak menindih gambar */
-.home-image::before {
-    height: 70%; /* Kurangi tinggi background blur */
-    margin-top: 40px;
-    border-radius: 40%;
-    filter: blur(25px); /* Kurangi blur */
-}
-
-.about {
-    grid-template-columns: 1fr; /* Mengubah layout menjadi satu kolom */
-    text-align: center;
-    padding: 15px; /* Mengurangi padding agar tidak terlalu lebar di mobile */
-}
-
-.darkmode .about {
-    grid-template-columns: 1fr; /* Mengubah layout menjadi satu kolom */
-    text-align: center;
-    padding: 15px; /* Mengurangi padding agar tidak terlalu lebar di mobile */
-}
-
-.about-img {
-    margin-top: 55px;
-/* Kurangi margin bawah *//* Pastikan z-index yang benar */
-    align-items: center;
-}
-
-.darkmode .about-img {
-    margin-top: 55px;
-/* Kurangi margin bawah *//* Pastikan z-index yang benar */
-    align-items: center;
-}
-
-.about-img img {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%; /* Menjaga gambar berbentuk lingkaran */
-    object-fit: cover; /* Agar gambar tetap proporsional */
-    margin: 0 auto; /* Mengatur gambar ke tengah */
-}
-
-.darkmode .about-img img {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%; /* Menjaga gambar berbentuk lingkaran */
-    object-fit: cover; /* Agar gambar tetap proporsional */
-    margin: 0 auto; /* Mengatur gambar ke tengah */
-}
-
-.about-text {
-    padding: 15px; /* Memberi jarak di sekitar teks */
-}
-
-.darkmode .about-text {
-    padding: 15px; /* Memberi jarak di sekitar teks */
-}
-#services {
-    font-size: 18px; /* Ukuran font yang lebih kecil */
-    margin-bottom: 2rem; /* Kurangi margin bawah */
-}
-
-.container {
-    padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
-}
-
-.container h1 {
-    font-size: 34px; /* Kurangi ukuran font judul */
-}
-
-.sub-title {
-    font-size: 30px; /* Kurangi ukuran font untuk sub-judul */
-    padding-bottom: 40px;
-}
-
-.services-list {
-    grid-template-columns: 1fr; /* Tampilan satu kolom di layar kecil */
-    gap: 3rem; /* Kurangi jarak antar kotak */
-    padding: 20px;
-}
-
-.services-list div {
-    padding: 15px; /* Kurangi padding pada kotak layanan */
-    font-size: 14px; /* Sesuaikan ukuran font */
-}
-
-.services-list div i {
-    font-size: 40px; /* Kurangi ukuran ikon */
-    margin-bottom: 20px;
-}
-
-.services-list div h2 {
-    font-size: 20px; /* Kurangi ukuran font judul layanan */
-    margin-bottom: 10px;
-}
-
-/* BAGIAN SKIILLS */
-.skills-list {
-    grid-template-columns: repeat(2, 1fr); /* 2 kolom pada mobile */
-    gap: 20px; /* Mengurangi jarak antar box */
-    padding: 0 10px; /* Menghilangkan padding kiri-kanan agar sesuai layar */
-}
-
-.darkmode .skills-list {
-    grid-template-columns: repeat(2, 1fr); /* 2 kolom pada mobile */
-    gap: 20px; /* Mengurangi jarak antar box */
-    padding: 0 10px; /* Menghilangkan padding kiri-kanan agar sesuai layar */
-}
-
-.skill-box {
-    padding: 15px; /* Mengurangi padding di dalam skill-box */
-}
-
-.darkmode .skill-box {
-    padding: 15px; /* Mengurangi padding di dalam skill-box */
-}
-
-.skill-box i {
-    font-size: 40px; /* Mengurangi ukuran ikon pada mobile */
-}
-
-.darkmode .skill-box i {
-    font-size: 40px; /* Mengurangi ukuran ikon pada mobile */
-}
-
-.skill-box h2 {
-    font-size: 18px; /* Mengurangi ukuran teks pada mobile */
-}
-
-.darkmode .skill-box h2 {
-    font-size: 18px; /* Mengurangi ukuran teks pada mobile */
-}
-
-.portfolio-grid {
-    grid-template-columns: repeat(1, 1fr); /* Tampilkan dua kolom pada layar kecil */
-    gap: 3rem; /* Kurangi jarak antar-kartu */
-}
-
-.project-card {
-    padding: 0.8rem; /* Kurangi padding pada kartu di mode mobile */
-}
-
-.project-info {
-    padding: 1rem 0.8rem; /* Kurangi padding vertikal dan horizontal */
-}
-
-.project-title h3 {
-    font-size: 1rem; /* Ukuran font lebih kecil untuk judul */
-}
-
-.project-description {
-    font-size: 0.8rem; /* Ukuran font lebih kecil untuk deskripsi */
-    margin-bottom: 0.5rem; /* Kurangi jarak bawah */
-}
-
-.tech-stack {
-    font-size: 0.8rem; /* Ukuran font lebih kecil untuk tech stack */
-}
-
-.project-links {
-    padding-top: 0.5rem; /* Kurangi padding atas */
-}
-
-.darkmode .project-card {
-    padding: 0.8rem; /* Kurangi padding pada kartu di mode mobile */
-}
-
-.darkmode .project-info {
-    padding: 1rem 0.8rem; /* Kurangi padding vertikal dan horizontal */
-}
-
-.darkmode .project-title h3 {
-    font-size: 1rem; /* Ukuran font lebih kecil untuk judul */
-}
-
-.darkmode .project-description {
-    font-size: 0.8rem; /* Ukuran font lebih kecil untuk deskripsi */
-    margin-bottom: 0.5rem; /* Kurangi jarak bawah */
-}
-
-.darkmode .tech-stack {
-    font-size: 0.8rem; /* Ukuran font lebih kecil untuk tech stack */
-}
-
-.contact {
-        grid-template-columns: 1fr; /* One column for mobile */
-        padding-left: 10px; /* Smaller padding */
-        padding-top: 40px; /* Smaller padding */
-        margin-top: 40px; /* Smaller margin */
-}
-
-.contact-text,
-.contact-form {
-        padding-left: 15px; /* Add padding to the left for better spacing */
-        padding-right: 15px; /* Optional: Add padding to the right */
-}
-
-.contact-text h2 {
-        font-size: 40px; /* Smaller font size */
-}
-
-.contact-text h4,
-.contact-text p {
-        font-size: 14px; /* Smaller font size */
-}
-
-    .contact-list li {
-        font-size: 14px; /* Smaller font size for contact list */
-        color: var(--dark-color);
-    }
-
-    .darkmode .contact-list li {
-        font-size: 14px; /* Smaller font size for contact list */
-        color: var(--dark-font);
-    }
-
-    .contact-form .send {
-        padding: 8px 20px; /* Smaller button padding */
-        font-size: 12px; /* Smaller font size for button */
-    }
-
-
-/* Desktop styles for contact section text */
-.contact-text {
-    padding-left: 15px; /* Add padding to the left for desktop */
-    padding-right: 15px; /* Optional: Add padding to the right */
-}
-
-.darkmode .contact-text {
-    padding-left: 15px; /* Add padding to the left for desktop */
-    padding-right: 15px; /* Optional: Add padding to the right */
-}
-
-.contact-text h2 {
-    font-size: 40px; /* Larger font size */
-    line-height: 1;
-    text-align: center;
-}
-
-.darkmode .contact-text h2 {
-    font-size: 40px; /* Larger font size */
-    line-height: 1;
-    text-align: center;
-}
-
-.contact-text h2 span {
-    color: var(--light-hover-background-color);
-}
-
-.contact-text h4 {
-    margin: 15px 0;
-    color: var(--light-hover-color);
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.darkmode .contact-text h4 {
-    margin: 15px 0;
-    color: var(--light-hover-color);
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.contact-text p {
-    color: var(--dark-card);
-    font-size: 20px;
-    line-height: 30px;
-    margin-bottom: 2rem;
-}
-
-.darkmode .contact-text p {
-    color: var(--dark-card);
-    font-size: 20px;
-    line-height: 30px;
-    margin-bottom: 2rem;
-}
-
-.contact-list {
-    margin-bottom: 3rem;
-}
-
-.contact-list li {
-    margin-bottom: 10px;
-    display: block;
-}
-
-.contact-list i {
-    display: inline-block;
-    color: var(--light-hover-background-color);
-    font-size: 20px;
-    font-weight: 600;
-    transition: all .40s ease;
-}
-
-.contact-list li a:hover {
-    transform: scale(1.01) translateY(-5px);
-    color: var(--light-hover-background-color);
-}
-
-/* Contact form styles */
-.contact-form {
-    padding: 20px; /* Padding inside form for spacing */
-    margin: 0 auto; /* Centering the form */
-    max-width: 600px; /* Maximum width */
-}
-
-/* Adjustments for inputs and textarea */
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-    width: 100%; /* Full width */
-    padding: 10px;
-    margin-bottom: 20px; /* Space between fields */
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-/* Button styling */
-.contact-form .send {
-    width: 100%;
-    padding: 10px;
-    background-color: #7E2553;
-    border: none;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.timeline-item {
-    width: 100%; /* Memastikan item mengambil lebar penuh */
-    padding: 10px; /* Memberikan padding yang lebih kecil */
-    text-align: left; /* Meratakan teks ke kiri */
-    box-sizing: border-box; /* Memastikan padding dihitung dalam lebar total */
-    margin-bottom: 20px; /* Memberikan jarak antar item */
-}
-
-.timeline-dot {
-    left: 5%; /* Mengatur posisi dot lebih dekat ke kiri */
-    width: 15px; /* Ukuran dot lebih kecil */
-    height: 15px; /* Ukuran dot lebih kecil */
-}
-
-.timeline-content {
-    padding: 15px; /* Mengurangi padding di konten */
-    background-color: var(--light-hover-color);
-    border-radius: 10px; /* Membuat sudut lebih halus */
-    opacity: 0; /* Memastikan opacity awal */
-    transition: opacity 0.5s ease; /* Transisi untuk efek fade in */
-}
-
-.timeline-content.animate {
-    opacity: 1; /* Mengubah opacity menjadi terlihat */
-    animation: fadeInRotate 0.5s ease forwards; /* Mengubah durasi animasi */
-}
-
-/* Untuk gambar logo, sesuaikan ukurannya */
-.logos {
-    width: 40px; /* Ukuran gambar yang lebih kecil di mobile */
-    height: 40px; /* Ukuran gambar yang lebih kecil di mobile */
-    margin-bottom: 10px; /* Jarak antara gambar dan teks */
-}
-
-.timeline-content .role {
-    font-size: 0.9rem;  /* Ukuran font lebih kecil di mobile */
-    font-weight: bold; /* Menekankan teks peran */
-}
-
-.timeline-content .company {
-    font-size: 0.7rem; /* Ukuran font untuk perusahaan */
-    margin-bottom: 5px; /* Jarak bawah untuk perusahaan */
-    color: var(--light-hover-background-color); /* Warna abu-abu untuk teks tanggal */
-}
-.darkmode .timeline-content .company {
-    font-size: 0.7rem; /* Ukuran font untuk perusahaan */
-    margin-bottom: 5px; /* Jarak bawah untuk perusahaan */
-    color: var(--dark-font-hover); /* Warna abu-abu untuk teks tanggal */
-}
-
-.timeline-content  .date {
-    font-size: 0.5rem; /* Ukuran font untuk tanggal */
-    color: #888; /* Warna abu-abu untuk teks tanggal */
-}
-.headera h1 {
-    font-size: 24px; /* Ukuran font yang lebih kecil */
-}
-
-
-}
-
-.headera {
-    font-weight: bold;
-    margin-bottom: 160px; /* Menjaga jarak di bawah judul */
-}
-
-.headera h1 {
-    font-size: 40px;
-    margin: 50px 0; /* Menambahkan jarak atas dan bawah */
-    text-align: center;
-    color: var(--light-font-color);
-}
-
-.darkmode .headera h1 {
-    color: var(--dark-font);
-}
-
-.headera span {
-    color: var(--light-hover-color);
-    padding: 0 5px; /* Menambahkan padding di kiri dan kanan jika perlu */
-}
-
-.darkmode .headera span {
-    color: var(--dark-hover);
-}
-
-.timeline {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.timeline::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    background-color: var(--light-font-color); /* Warna garis */
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.darkmode .timeline::after {
-    background-color: var(--dark-font); /* Warna garis */
-
-}
-
-.timeline-item {
-    padding: 10px 40px;
-    position: relative;
-    width: 50%;
-    
-    /* Menjaga jarak dari garis */
-}
-
-.timeline-item:nth-child(odd) {
-    left: 0;
-}
-
-.timeline-item:nth-child(even) {
-    left: 50%;
-}
-
-/* Animasi untuk timeline-content */
-.timeline-content {
-    padding: 20px 30px;
-    background-color: var(--light-hover-color);
-    border-radius: 15px;
-    position: relative;
-    color: #fff;
-    text-align: center;
-    opacity: 0; /* Mulai dengan transparan */
-    transition: opacity 0.5s ease; /* Transisi untuk opacity */
-
-}
-
-.darkmode .timeline-content {
-    background-color: var(--dark-card);
-}
-
-/* Animasi untuk item di sebelah kiri */
-.timeline-item:nth-child(odd) .timeline-content {
-    animation: slideRight 1s ease forwards;
-}
-
-/* Animasi untuk item di sebelah kanan */
-.timeline-item:nth-child(even) .timeline-content {
-    animation: slideLeft 1s ease forwards;
-}
-
-/* Kelas animate yang ditambahkan saat visible */
-.timeline-content .animate {
-    opacity: 1; /* Menjadi terlihat */
-    animation: fadeInRotate 1s ease forwards; /* Menambahkan animasi */
-}
-
-/* Animasi untuk gambar logo */
-.timeline-content .logos {
-    opacity: 0;
-    transform: scale(0.5);
-    transition: all 0.5s ease 0.3s;
-}
-
-.timeline-content.animate .logos {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* Animasi untuk teks */
-.timeline-content .role,
-.timeline-content .company,
-.timeline-content .date {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease;
-}
-
-.timeline-content.animate .role {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.4s;
-}
-
-.timeline-content.animate .company {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.5s;
-}
-
-.timeline-content.animate .date {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.6s;
-}
-
-/* Hover effect */
-.timeline-content {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline-content:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-
-.timeline-content img {
-    width: 100%; /* Memastikan gambar mengisi lebar card */
-    height: auto; /* Menjaga aspek rasio gambar */
-    max-width: 100px; /* Menentukan lebar maksimum jika perlu */
-    border-radius: 5px; /* Membulatkan sudut gambar */
-    margin-bottom: 15px; /* Jarak antara gambar dan teks */
-}
-
-.timeline-dot {
-    width: 20px;
-    height: 20px;
-    background-color: var(--light-font-color); /* Warna dot */
-    border-radius: 50%;
-    position: absolute;
-    left: 100%; /* Menjaga titik di tengah garis */
-    transform: translate(-50%, -50%); /* Memastikan titik berada di tengah */
-    top: 50%; /* Memindahkan ke tengah vertikal dari item */
-    z-index: 1;
-    
-}
-
-.darkmode .timeline-dot {
-    background-color: var(--dark-font); /* Warna dot */
-}
-
-.timeline-item:nth-child(even) .timeline-dot {
-    left: 0%; /* Pastikan titik genap juga di tengah */
-    transform: translate(-50%, -50%); /* Pindahkan ke tengah */
-}
-
-.timeline-content .role {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.timeline-content .company {
-    font-size: 1rem;
-    margin-bottom: 5px;
-    color: var(--light-hover-background-color);
-}
-.darkmode .timeline-content .company {
-    font-size: 1rem;
-    margin-bottom: 5px;
-    color: var(--dark-font-hover);
-}
-
-.timeline-content .date {
-    color: #888;
-    font-size: 0.9rem;
-}
-    
-
-.logos {
-    width: 50px; /* Ukuran gambar bisa disesuaikan */
-    height: 50px; /* Ukuran gambar bisa disesuaikan */
-    object-fit: cover;
-    
-    border-radius: 5px;
-    margin-bottom: 15px; /* Jarak antara gambar dan teks */
-}
-
-.headera h1 {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.7s ease;
-}
-
-.headera h1.animate {
-    animation: slideRight 1s ease forwards; /* Ganti dengan animasi yang diinginkan */
-    animation-delay: .4s;
 }

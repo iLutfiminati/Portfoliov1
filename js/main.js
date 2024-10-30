@@ -201,8 +201,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const welcomeText = document.querySelector('.home-content h3');
   const socialLinks = document.querySelectorAll('.home-sci a'); // Tambahkan ini
   const descriptionText = document.querySelector('.home-content p');
-  const headreah = document.querySelector('.headera h1');
-  const timelineContents = document.querySelectorAll('.timeline-content');
+  const headera1 = document.querySelector('.headera h1');
+  const timelineone = document.querySelector('.timeline-content');
+  const timelineItems = document.querySelectorAll('.timeline-item');
+
+
   
   
 
@@ -234,14 +237,17 @@ document.addEventListener('DOMContentLoaded', function() {
   observer.observe(welcomeText);
   observer.observe(nameText);
   observer.observe(descriptionText);
-  observer.observe(headreah);
-  observer.observe(document.querySelector('.home-content h2')); // Observasi <h2>
+  observer.observe(headera1);
 
+
+
+  observer.observe(document.querySelector('.home-content h2')); // Observasi <h2>
+  timelineItems.forEach(item => observer.observe(item));
   projectCards.forEach(card => observer.observe(card)); 
   socialLinks.forEach(link => observer.observe(link)); // Observe elemen sosial
 
   // Observe setiap skill-box
   skillBoxes.forEach(skillBox => observer.observe(skillBox));
-  timelineContents.forEach(content => observer.observe(content));
+
 
 });

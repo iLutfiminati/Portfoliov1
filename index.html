@@ -13,16 +13,18 @@
     <link rel="icon" href="foto/12345.png">
 </head>
 <body>
+
     <div>
         <header class="header">
             <a href="#" class="logo">Portfolio</a>
             <nav class="navbar">
                 <a href="#home" style="--i:1" class="active">HOME</a>
                 <a href="#about" style="--i:2">ABOUT</a>
+                <a href="#headera" style="--i:4">EXPERIENCE</a>
+                <a href="#services" style="--i:4">AOI</a>
                 <a href="#skills" style="--i:3">SKILL</a>
                 <a href="#project" style="--i:3">PROJECT</a>
                 <a href="#contact" style="--i:4">CONTACT</a>
-                <a href="#headera" style="--i:4">EXPERIENCE</a>
             </nav>
             <div class="btn">
                 <div class="btn__indicator">
@@ -57,10 +59,10 @@
 
         <section class="about" id="about">
             <div class="about-img">
-                <img src="foto/photobgbiru.jpg">
+                <img src="foto/photobgbiru.jpg" alt="Deskripsi gambar tentang Lutfi Rijal Alfarid">
             </div>
             <div class="about-text">
-                <h2>About<span>Me</span></h2>
+                <h2>About <span>Me</span></h2>
                 <h4>Lutfi Rijal Alfarid</h4>
                 <p>
                     I am an Informatics graduate with a deep interest in UI/UX, web development, and IT support. I'm passionate about combining aesthetic design with robust code to create impactful digital experiences. With hands-on experience in web development projects, I have the skills to deliver both functional and engaging solutions. I'm always eager to learn, grow, and collaborate, and I'm ready to contribute to the ever-evolving world of design and technology.
@@ -68,8 +70,34 @@
             </div>
         </section>
 
-        <section>
-            <div class="services" id="services">
+        <section id="headera" class="headera">
+            <h1>Some of <span>Work Experience</span></h1>
+        
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <img src="foto/Logo-Nuri-Global-01-2.png" alt="Logo of PT Nuri Gaya Citra" class="logos">
+                        <div class="role">UI/UX Designer Intern</div>
+                        <div class="company">PT Nuri Gaya Citra (NURI)</div>
+                        <div class="date">Jan 2024 - Jan 2024</div>
+                        
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <img src="foto/logo-niagahoster-removebg-preview.png" alt="Logo of Niagahoster" class="logos">
+                        <div class="role">UI/UX Designer Intern</div>
+                        <div class="company">Niagahoster</div>
+                        <div class="date">Des 2023 - Jan 2024</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="services">
                 <div class="container">
                     <h1 class="sub-title">Areas of <span>Interest</span></h1>
                     <div class="services-list">
@@ -90,12 +118,11 @@
                         
                     </div>
                 </div>
-            </div>
         </section>
 
-        <section id="skills">
-            <div class="container1">
-                <h1 class="sub-title">SKILLS</h1>
+        <section class="container1" id="skills">
+
+                <h1>SKILLS</h1>
                 <div class="skills-list">
                     <div class="skill-box">
                         <i class='bx bxl-html5'></i> <!-- Ikon HTML -->
@@ -150,10 +177,9 @@
                         <h2>Teliti</h2>
                     </div>
                 </div>
-            </div>
+
         </section>
-        
-        
+
         <Section id="project" class="project">
             <h1 class="sub-title">PROJECT</h1>
         <div class="portfolio-grid">
@@ -260,39 +286,13 @@
         </div>
         </Section>
 
-        <section id="headera" class="headera">
-            <h1>Some of <span>Work Experience</span></h1>
-        
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <img src="foto/Logo-Nuri-Global-01-2.png" alt="Auto2000 Logo" class="logos">
-                    <div class="role">UI/UX Designet Intern</div>
-                    <div class="company">PT Nuri Gaya Citra (NURI)</div>
-                    <div class="date">Jan 2024 - Jan 2024</div>
-                </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <img src="foto/logo-niagahoster-removebg-preview.png" alt="EM Logo" class="logos">
-                    <div class="role">UI/UX Designet Intern</div>
-                    <div class="company">Niagahoster</div>
-                    <div class="date">Des 2023 - Jan 2024</div>
-                </div>
-            </div>
-        </div>
-        </section>
-
         <section class="contact" id="contact">
             <div class="contact-text">
                 <h2>Contact <span>Me</span></h2>
                 <h4>Let's work together</h4>
                 <p>I'm glad you've visited my personal portfolio website! If you have any questions, suggestions, or would like to collaborate, please feel free to contact me through this form. I will endeavor to reply to your message as soon as possible.</p>
                 <ul class="contact-list">
-                    <li><i class="bx bxs-send"></i> lutfirijalalfarid@gmail.com</li>
+                    <li><i class="bx bxs-envelope"></i> lutfirijalalfarid@gmail.com</li>
                     <li><i class="bx bxs-phone"></i> 082118935496</li>
                 </ul>
                 <div class="home-sci">  
@@ -312,12 +312,10 @@
                 </form>
             </div>
         </section>
-
+        
         <div class="last-text">
             <p>&copy; <span id="year"></span> Lutfi Rijal Alfarid.</p>
         </div>
-        
-        
 
     </div>
     <a href="#" class="top"><i class='bx bx-up-arrow-alt'></i></a>
