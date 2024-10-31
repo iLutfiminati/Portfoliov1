@@ -1462,6 +1462,12 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
         display: none; /* Navbar is hidden by default */
     
     }
+    .header{
+        background-color: var(--light-color);
+    }
+    .darkmode .header{
+        background-color: var(--dark-color);
+    }
 
     .navbar a{
         color: var(--light-color);
