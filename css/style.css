@@ -1411,7 +1411,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     
     .darkmode .navbar {
         display: none; /* Navbar is hidden by default */
-        background-color: rgba(30, 30, 30, 0.9); /* Contoh warna gelap dengan transparansi */
+        
     }
     
     .navbar.active {
@@ -1469,6 +1469,14 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     }
 
     /* Bagian 1 */
+
+    .darkmode .header {
+        -webkit-backdrop-filter: blur(50px); /* Safari untuk iOS */
+        backdrop-filter: blur(50px); /* Peramban lain */
+        background-color: var(--dark-color); /* Warna hitam dengan transparansi */
+        z-index: 100;
+    }
+    
     
     .home {
         flex-direction: column;
@@ -1981,6 +1989,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     border-radius: 5px;
 }
 }
+
 
 
 
