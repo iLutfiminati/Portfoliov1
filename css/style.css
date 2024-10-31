@@ -2,11 +2,10 @@
 
 :root{
     /* COLORS */
-    --dark-font: #F5F5F5;
-    --dark-color: #121212;
-    --dark-hover: #CF4647;
-    --dark-font-hover: #F5D061;
-    --dark-card: #3A3B3C;
+    --dark-font: #E2E2D2;
+    --dark-color: #141D26;
+    --dark-font-hover: #C51F5D; 
+    --dark-card: #243447;
 
     --light-color: #F5F5F5;
     --light-icon-color: #FFDE59;
@@ -139,7 +138,7 @@ body.darkmode{
 }
 
 .darkmode .navbar a {
-    color: #fff; /* Warna teks default */
+    color: var(--dark-font); /* Warna teks default */
     text-decoration: none;
     font-weight: bold;
     padding: 15px 25px; /* Padding untuk meningkatkan area klik */
@@ -150,7 +149,7 @@ body.darkmode{
 
 .darkmode .navbar a:hover {
     background-color: var(--dark-font-hover); /* Ganti dengan warna latar belakang yang diinginkan saat hover */
-    color: var(--dark-hover); /* Ganti dengan warna teks yang diinginkan saat hover */
+    color: var(--dark-color); /* Ganti dengan warna teks yang diinginkan saat hover */
 
 }
 
@@ -433,7 +432,7 @@ body.darkmode{
     display: inline-block;
     margin-top: 20px;
     padding: 12px 28px;
-    background-color: var(--dark-hover);
+    background-color: var(--dark-font-hover);
     border: none;
     color: var(--dark-font);
     font-size: 16px;
@@ -445,11 +444,11 @@ body.darkmode{
     opacity: 1;
     animation: slideTop 1s ease forwards;
     animation-delay: 2s;
-    box-shadow: 0 0 5px var(--dark-hover), 0 0 25px var(--light-hover-color);
+    box-shadow: 0 0 5px var(--dark-font-hover), 0 0 25px var(--light-hover-color);
 }
 
 .darkmode .tombol:hover {
-    background-color: var(--dark-hover); /* Hover efek untuk tombol */
+    background-color: var(--dark-font-hover); /* Hover efek untuk tombol */
     box-shadow: 0 0 5px var(--dark-color), 0 0 10px var(--dark-color), 0 0 15px var(--dark-color), 0 0 20px var(--dark-font), 0 0 50px var(--dark-color);
 }
 
@@ -630,7 +629,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 }
 
 .darkmode .headera span {
-    color: var(--dark-hover); /* Warna teks di mode gelap */
+    color: var(--dark-font-hover); /* Warna teks di mode gelap */
 }
 
 /* Styling dasar untuk timeline */
@@ -662,13 +661,13 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     width: 50%; /* Setiap item menempati setengah lebar */
     opacity: 0;
     visibility: hidden; /* Mulai dalam keadaan tidak terlihat */
-    transition: opacity 0.5s ease, visibility 0s 0.5s; /* Transisi yang mulus */
+    /* Transisi yang mulus */
 }
 
 .timeline-item.animate {
     opacity: 1;
     visibility: visible;
-    transition: opacity 1.5s ease; /* Animasi untuk elemen yang terlihat */
+     /* Animasi untuk elemen yang terlihat */
 }
 
 .timeline-item:nth-child(odd) {
@@ -678,6 +677,16 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 .timeline-item:nth-child(even) {
     left: 50%; /* Item genap di sisi kanan */
 }
+.timeline-item:nth-child(odd).animate {
+    animation: slideRight 1s ease forwards;
+    animation-delay: .1s;
+}
+
+.timeline-item:nth-child(even).animate {
+    animation: slideLeft 1s ease forwards;
+    animation-delay: .1s;
+}
+
 /* Styling untuk konten item dengan animasi */
 .timeline-content {
     padding: 20px 30px; /* Padding dalam konten item */
@@ -694,15 +703,6 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 }
 
 /* Animasi untuk item timeline */
-.timeline-item:nth-child(odd) .timeline-content {
-    animation: slideRight 1s ease forwards; /* Animasi untuk item di kiri */
-
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    animation: slideLeft 1s ease forwards; /* Animasi untuk item di kanan */
-
-}
 
 /* Class to trigger animations */
 
@@ -720,7 +720,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     background-color: var(--light-font-color);
     border-radius: 50%;
     position: absolute;
-    left: 100%;
+    left: 98%;
     transform: translate(-50%, -50%);
     top: 50%;
     z-index: 1;
@@ -731,7 +731,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 }
 
 .timeline-item:nth-child(even) .timeline-dot {
-    left: 0%;
+    left: -2%;
 }
 
 /* Text styles */
@@ -739,6 +739,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 5px;
+    color: var(--dark-font);
 }
 
 .timeline-content .company {
@@ -755,6 +756,52 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     color: #888;
     font-size: 0.9rem;
 }
+
+/* Awal tanpa animasi */
+/* Awal: dot dan content dalam keadaan tidak terlihat */
+.timeline-item .timeline-dot,
+.timeline-item .timeline-content {
+    opacity: 0;
+}
+
+/* Animasi dot muncul lebih dulu */
+.timeline-item.animate .timeline-dot {
+    opacity: 1;
+    animation: fadeIn 0.5s ease forwards; /* Animasi fade untuk dot */
+    animation-delay: 0s; /* Dot muncul tanpa delay */
+}
+
+/* Animasi card muncul setelah dot */
+.timeline-item.animate .timeline-content {
+    opacity: 1;
+    animation: slideUp 0.8s ease forwards;
+    animation-delay: 22.5s; /* Card muncul setelah dot selesai */
+}
+
+/* Definisi animasi untuk dot dan card */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8); /* Dot sedikit mengecil untuk efek zoom-in */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
 
  /* -------------- Bagian 3 -------------- */
 
@@ -779,7 +826,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 .container h1 {
     text-align: center;
     font-size: 40px;
-    color: var(--light-font-color);
+    color: var(--dark-font);
     margin-top: -20px;
 }
 
@@ -805,9 +852,9 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     font-size: 13px;
     font-weight: 13px;
     border-radius: 20px;
-    background-color: var(--light-hover-color);
+    background-color: var(--dark-color);
     transition: background 0.5s, transform 0.5s;
-    box-shadow: 1px 1px 20px var(--light-font-color), 1px 1px 40px var(--light-color);
+    box-shadow: 1px 1px 20px var(--dark-card), 1px 1px 40px var(--dark-card);
 }
 
 .darkmode .services-list div {
@@ -817,7 +864,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     border-radius: 20px;
     background-color: var(--dark-card);
     transition: background 0.5s, transform 0.5s;
-    box-shadow: 2px 2px 10px var(--dark-font), 2px 2px 30px var(--dark-color);
+    box-shadow: 2px 2px 10px var(--dark-color), 2px 2px 30px var(--dark-color);
 }
 
 .services-list div:hover {
@@ -834,6 +881,12 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 
 .services-list div p {
     text-align: justify;
+    color: var(--dark-font);
+}
+
+.darkmode .services-list div p {
+    text-align: justify;
+    color: var(--dark-font);
 }
 
 .services-list div i {
@@ -846,6 +899,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 15px;
+    color: var(--dark-font-hover);
 }
 /* Reset animasi */
 
@@ -929,22 +983,13 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5), 0px 12px 45px rgba(0, 0, 0, 0.3); /* Shadow intensifies */
 }
 
-.skill-box:hover {
-    transform: translateY(-5px); /* Small lift effect */
-    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5), 0px 12px 45px rgba(0, 0, 0, 0.3); /* Shadow intensifies */
-}
-
-.darkmode .skill-box:hover {
-    transform: translateY(-5px); /* Small lift effect */
-    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.5), 0px 12px 45px rgba(0, 0, 0, 0.3); /* Shadow intensifies */
-}
-
 .skill-box h2 {
     font-size: 18px; /* Icon size */
 }
 
 .darkmode .skill-box h2 {
     font-size: 18px; /* Icon size */
+    color: var(--dark-font);
 }
 
 .skills-list .skill-box i {
@@ -956,7 +1001,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 
 .darkmode .skills-list .skill-box i {
     font-size: 35px; /* Icon size */
-    color: #e0e4ef; /* Icon color */
+    color: var(--dark-font-hover); /* Icon color */
     margin-bottom: 5px;
     margin-top: 10px;
 }
@@ -1111,7 +1156,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 }
 
 .darkmode .sub-title{
-    color: var(--light-color);
+    color: var(--dark-font);
     font-weight: bold;
 }
 
@@ -1235,45 +1280,45 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     background-color: var(--dark-color);
 }
 
-.contact-text h2{
+.contact .contact-text h2{
     opacity: 0;
     font-size: 40px;
     line-height: 1;
     text-align: center;
 }
 
-.darkmode .contact-text h2{
+.darkmode .contact .contact-text h2{
 
     color: var(--dark-font);
 }
 
-.contact-text h2 span{
+.contact .contact-text h2 span{
     color: var(--light-hover-background-color);
 }
 
-.darkmode .contact-text h2 span{
+.darkmode .contact .contact-text h2 span{
     color: var(--dark-font-hover);
 }
 
-.contact-text h4{
+.contact .contact-text h4{
     margin: 15px 0;
     color: var(--light-hover-background-color);
     font-size: 18px;
 }
 
-.darkmode .contact-text h4{
-    color: var(--dark-hover);
+.darkmode .contact .contact-text h4{
+    color: var(--dark-font-hover);
 
 }
 
-.contact-text p{
-    color: var(--dark-card);
+.contact .contact-text p{
+    color: var(--dark-font);
     font-size: 18px;
     margin-bottom: 2rem;
     text-align: justify;
 }
 
-.darkmode .contact-text p{
+.darkmode .contact .contact-text p{
     color: var(--dark-font);
 }
 
@@ -1333,8 +1378,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     border: 1px solid #ccc;
 }
 
-/* Button styling */
-.contact-form .send {
+.contact-form input[type="submit"]{
     width: 100%;
     padding: 10px;
     background-color: var(--light-hover-color);
@@ -1343,10 +1387,18 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
-}
 
-.darkmode .contact-form .send {
-    background-color: var(--dark-hover);
+}
+.contact-form input[type="submit"]{
+    width: 100%;
+    padding: 10px;
+    background-color: var(--dark-font-hover);
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+
 }
 
 .last-text p{
@@ -1411,7 +1463,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     
     .darkmode .navbar {
         display: none; /* Navbar is hidden by default */
-        
+        background-color: rgba(30, 30, 30, 0.9); /* Contoh warna gelap dengan transparansi */
     }
     
     .navbar.active {
@@ -1424,34 +1476,18 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
         padding: 15px; /* Padding navbar */
         z-index: 10; /* Di atas elemen lain */
     }
-    
+
     .darkmode .navbar.active {
-        display: flex; /* Show navbar when active */
-        flex-direction: column; /* Arrange items vertically */
-        align-items: center; /* Center align items */
-        gap: 20px; /* Space between items */
-        -webkit-backdrop-filter: blur(10px); /* Safari for iOS */
-        backdrop-filter: blur(10px); /* Non-Safari browsers */
-        background-color: rgba(255, 255, 255, 0.8); /* Background with transparency */
-        left: 0; /* Align to the left */
-        right: 0; /* Align to the right */
-        padding: 15px; /* Padding for the navbar */
-        z-index: 10; /* To be above other elements */
+        display: flex; /* Navbar ditampilkan saat aktif */
+        flex-direction: column; /* Susunan item vertikal */
+        align-items: center; /* Rata tengah */
+        gap: 20px; /* Ruang antar item */
+        left: 0; /* Ratakan ke kiri */
+        right: 0; /* Ratakan ke kanan */
+        padding: 15px; /* Padding navbar */
+        z-index: 10; /* Di atas elemen lain */
     }
     
-    .navbar a {
-        margin-bottom: 8px;
-        padding: 8px;
-        width: 100%;
-        color: var(--light-color); /* Warna teks putih untuk kontras */
-    }
-    
-    .darkmode .navbar a {
-        margin-bottom: 8px;
-        padding: 8px;
-        width: 100%;
-        color: var(--dark-color); /* Warna teks putih untuk kontras */
-    }
     
     /* Pastikan .hamburger terlihat di dark mode */
     .hamburger,
@@ -1469,25 +1505,16 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     }
 
     /* Bagian 1 */
-
-    .darkmode .header {
-        -webkit-backdrop-filter: blur(50px); /* Safari untuk iOS */
-        backdrop-filter: blur(50px); /* Peramban lain */
-        background-color: var(--dark-color); /* Warna hitam dengan transparansi */
-        z-index: 100;
-    }
-    
     
     .home {
         flex-direction: column;
         text-align: center;
-        
+
     }
 
     .darkmode .home {
         flex-direction: column;
         text-align: center;
-       
     }
 
     .home-content {
@@ -1509,6 +1536,10 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     }
 
     .home-content p {
+        font-size: 16px; /* Ukuran font lebih kecil */
+        padding: 0 10px; /* Tambahkan padding untuk kenyamanan baca */
+    }
+    .darkmode .home-content p {
         font-size: 16px; /* Ukuran font lebih kecil */
         padding: 0 10px; /* Tambahkan padding untuk kenyamanan baca */
     }
@@ -1618,13 +1649,13 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     }
 
     .timeline-dot {
-        left: 111%; 
+        left: 109%; 
         width: 15px; /* Lebar dot lebih kecil */
         height: 15px; /* Tinggi dot lebih kecil */
     }
 
     .timeline-item:nth-child(even) .timeline-dot {
-        left: 111%;
+        left: 109%;
     }
 
     .logos {
@@ -1670,6 +1701,12 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
             font-size: 18px; /* Ukuran font yang lebih kecil */
             margin-bottom: 2rem; /* Kurangi margin bawah */
         }
+
+        .sub-title {
+            text-align: center;
+            font-size: 40px;
+            padding-bottom: 10px;
+        }
         
         .container {
             padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
@@ -1677,10 +1714,6 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     
         .darkmode .container {
             padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
-        }
-        
-        .container h1 {
-            font-size: 34px; /* Kurangi ukuran font judul */
         }
     
         .darkmode .container h1 {
@@ -1844,6 +1877,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
         padding-top: 40px; /* Smaller padding */
         margin-top: 40px; /* Smaller margin */
 }
+
 .darkmode .contact {
         grid-template-columns: 1fr; /* One column for mobile */
         padding-left: 10px; /* Smaller padding */
@@ -1883,55 +1917,55 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 
 
 /* Desktop styles for contact section text */
-.contact-text {
+.contact .contact-text {
     padding-left: 15px; /* Add padding to the left for desktop */
     padding-right: 15px; /* Optional: Add padding to the right */
 }
 
-.darkmode .contact-text {
+.darkmode .contact .contact-text {
     padding-left: 15px; /* Add padding to the left for desktop */
     padding-right: 15px; /* Optional: Add padding to the right */
 }
 
-.contact-text h2 {
+.contact .contact-text h2 {
     font-size: 40px; /* Larger font size */
     line-height: 1;
     text-align: center;
 }
 
-.darkmode .contact-text h2 {
+.darkmode .contact .contact-text h2 {
     font-size: 40px; /* Larger font size */
     line-height: 1;
     text-align: center;
 }
 
-.contact-text h2 span {
+.contact .contact-text h2 span {
     color: var(--light-hover-background-color);
 }
 
-.contact-text h4 {
+.contact .contact-text h4 {
     margin: 15px 0;
-    color: var(--light-hover-color);
+    color: var(--dark-font-hover);
     font-weight: 600;
     font-size: 20px;
 }
 
-.darkmode .contact-text h4 {
+.darkmode .contact .contact-text h4 {
     margin: 15px 0;
-    color: var(--light-hover-color);
+    color: var(--dark-font-hover);
     font-weight: 600;
     font-size: 20px;
 }
 
-.contact-text p {
+.contact .contact-text p {
     color: var(--dark-card);
     font-size: 20px;
     line-height: 30px;
     margin-bottom: 2rem;
 }
 
-.darkmode .contact-text p {
-    color: var(--dark-card);
+.darkmode .contact .contact-text p {
+    color: var(--dark-font);
     font-size: 20px;
     line-height: 30px;
     margin-bottom: 2rem;
@@ -1981,7 +2015,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 .contact-form .send {
     width: 100%;
     padding: 10px;
-    background-color: #7E2553;
+    background-color: var(--dark-font-hover);
     border: none;
     color: white;
     font-weight: bold;
@@ -1989,7 +2023,6 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     border-radius: 5px;
 }
 }
-
 
 
 
