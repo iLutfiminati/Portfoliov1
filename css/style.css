@@ -724,6 +724,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     transform: translate(-50%, -50%);
     top: 50%;
     z-index: 1;
+    align-items: center;
 }
 
 .darkmode .timeline-dot {
@@ -1963,14 +1964,14 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 
 .contact .contact-text p {
     color: var(--dark-card);
-    font-size: 20px;
+    font-size: 15px;
     line-height: 30px;
     margin-bottom: 2rem;
 }
 
 .darkmode .contact .contact-text p {
     color: var(--dark-font);
-    font-size: 20px;
+    font-size: 15px;
     line-height: 30px;
     margin-bottom: 2rem;
 }
