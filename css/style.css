@@ -1649,13 +1649,13 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     }
 
     .timeline-dot {
-        left: 109%; 
+        left: 108%; 
         width: 15px; /* Lebar dot lebih kecil */
         height: 15px; /* Tinggi dot lebih kecil */
     }
 
     .timeline-item:nth-child(even) .timeline-dot {
-        left: 109%;
+        left: 108%;
     }
 
     .logos {
@@ -1716,6 +1716,10 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
             padding: 40px 10px; /* Kurangi padding agar lebih sesuai di layar kecil */
         }
     
+        .container h1 {
+            font-size: 34px; /* Kurangi ukuran font judul */
+        }
+        
         .darkmode .container h1 {
             font-size: 34px; /* Kurangi ukuran font judul */
         }
