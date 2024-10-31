@@ -8,10 +8,11 @@
     --dark-card: #243447;
 
     --light-color: #F5F5F5;
+    --light-background-color: #C7C7C7;
     --light-icon-color: #FFDE59;
     --light-font-color: #121212;
-    --light-hover-color: #30475E;
-    --light-hover-background-color: #F05454;
+    --light-hover-color: #08415C;
+    --light-hover-background-color: #CC2936;
 
 
 }
@@ -827,7 +828,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 .container h1 {
     text-align: center;
     font-size: 40px;
-    color: var(--dark-font);
+    color: var(--light-font-color);
     margin-top: -20px;
 }
 
@@ -853,7 +854,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     font-size: 13px;
     font-weight: 13px;
     border-radius: 20px;
-    background-color: var(--dark-color);
+    background-color: var(--light-hover-color);
     transition: background 0.5s, transform 0.5s;
     box-shadow: 1px 1px 20px var(--dark-card), 1px 1px 40px var(--dark-card);
 }
@@ -868,21 +869,9 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     box-shadow: 2px 2px 10px var(--dark-color), 2px 2px 30px var(--dark-color);
 }
 
-.services-list div:hover {
-    background-color: var(--light-hover-color); /* Efek hover yang ringan */
-    transform: translateY(-10px); /* Sedikit mengangkat saat hover */
-    cursor: pointer;
-}
-
-.darkmode .services-list div:hover {
-    background-color: var(--dark-card); /* Efek hover yang ringan */
-    transform: translateY(-10px); /* Sedikit mengangkat saat hover */
-    cursor: pointer;
-}
-
 .services-list div p {
     text-align: justify;
-    color: var(--dark-font);
+    color: var(--light-color);
 }
 
 .darkmode .services-list div p {
@@ -893,10 +882,22 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 .services-list div i {
     font-size: 50px;
     margin-bottom: 30px;
+    color: var(--light-color);
+}
+
+.darkmode .services-list div i {
+    font-size: 50px;
+    margin-bottom: 30px;
     color: var(--dark-font);
 }
 
 .services-list div h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--light-hover-background-color);
+}
+.darkmode .services-list div h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 15px;
@@ -995,7 +996,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 
 .skills-list .skill-box i {
     font-size: 35px; /* Icon size */
-    color: #e0e4ef; /* Icon color */
+    color: var(--light-hover-background-color); /* Icon color */
     margin-bottom: 5px;
     margin-top: 10px;
 }
@@ -1313,7 +1314,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 }
 
 .contact .contact-text p{
-    color: var(--dark-font);
+    color: var(--light-font-color);
     font-size: 18px;
     margin-bottom: 2rem;
     text-align: justify;
@@ -1390,7 +1391,8 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     border-radius: 5px;
 
 }
-.contact-form input[type="submit"]{
+
+.darkmode .contact-form input[type="submit"]{
     width: 100%;
     padding: 10px;
     background-color: var(--dark-font-hover);
@@ -1416,7 +1418,6 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 .darkmode .last-text p{
     color: var(--dark-font);
 }
-
 
 .contact-text h2.animate {
     opacity: 1;
@@ -1460,6 +1461,10 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     .navbar {
         display: none; /* Navbar is hidden by default */
     
+    }
+
+    .navbar a{
+        color: var(--light-color);
     }
     
     .darkmode .navbar {
@@ -1510,7 +1515,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     .home {
         flex-direction: column;
         text-align: center;
-
+        margin-bottom: -4rem;
     }
 
     .darkmode .home {
@@ -1620,6 +1625,11 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
     /* Bagian Experience */
     .headera {
         height: auto;
+        margin-bottom: -1rem;
+    }
+    .darkmode .headera {
+        height: auto;
+        margin-bottom: -1rem;
     }
 
     .headera h1 {
@@ -1695,12 +1705,12 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
             width: 100%;
             height: auto;
             font-size: 18px; /* Ukuran font yang lebih kecil */
-            margin-bottom: 2rem; /* Kurangi margin bawah */
+            margin-bottom: -4rem;
         }
     
         .darkmode #services {
             font-size: 18px; /* Ukuran font yang lebih kecil */
-            margin-bottom: 2rem; /* Kurangi margin bawah */
+            margin-bottom: -4rem;
         }
 
         .sub-title {
@@ -1773,6 +1783,7 @@ color: var(--dark-font); /* Mengubah warna teks di mode gelap */
 /* BAGIAN SKIILLS */
 #skills{
     height: auto;
+    margin-bottom: -4rem;
 }
 
 .skills-list {
