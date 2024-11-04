@@ -52,7 +52,7 @@ btn.addEventListener('click', () => {
 
     // Inisialisasi Typed.js untuk teks yang muncul
     var typed = new Typed(".text", {
-        strings: ["UI/UX Designer", "IT Support", "Web Developer"],
+        strings: ["UI/UX Designer", "Web Developer"],
         typeSpeed: 100,
         backSpeed: 100,
         backDelay: 1000,
@@ -188,8 +188,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const aboutTitle = document.querySelector('.about-text h2');
   const aboutName = document.querySelector('.about-text h4');
   const aboutDesc = document.querySelector('.about-text p');
-  const serpis = document.querySelector('.container h1');
-  const serpislist = document.querySelector('.services-list');
   const skillTitle = document.querySelector('.container1 h1');
   const skillBoxes = document.querySelectorAll('.skill-box');
   const projectTitle = document.querySelector('.project h1');
@@ -227,8 +225,6 @@ document.addEventListener('DOMContentLoaded', function() {
   observer.observe(aboutTitle);
   observer.observe(aboutName);
   observer.observe(aboutDesc);
-  observer.observe(serpis);
-  observer.observe(serpislist);
   observer.observe(skillTitle); // Observe h1 di .container1
   observer.observe(projectTitle);
   observer.observe(contactH2);
@@ -250,4 +246,21 @@ document.addEventListener('DOMContentLoaded', function() {
   skillBoxes.forEach(skillBox => observer.observe(skillBox));
 
 
+});
+
+document.querySelectorAll('.tooltip-container').forEach(item => {
+  const tooltipText = document.createElement('span');
+  tooltipText.classList.add('tooltip');
+  tooltipText.textContent = item.getAttribute('data-tooltip');
+  item.appendChild(tooltipText);
+
+  item.addEventListener('mouseenter', () => {
+      tooltipText.style.visibility = 'visible';
+      tooltipText.style.opacity = '1';
+  });
+
+  item.addEventListener('mouseleave', () => {
+      tooltipText.style.visibility = 'hidden';
+      tooltipText.style.opacity = '0';
+  });
 });
