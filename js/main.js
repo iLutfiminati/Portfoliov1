@@ -52,7 +52,7 @@ btn.addEventListener('click', () => {
 
     // Inisialisasi Typed.js untuk teks yang muncul
     var typed = new Typed(".text", {
-        strings: ["UI/UX Designer", "Web Developer"],
+        strings: ["IT Support","UI/UX Designer", "Web Developer"],
         typeSpeed: 100,
         backSpeed: 100,
         backDelay: 1000,
